@@ -48,14 +48,11 @@ Your app is ready to be deployed!
 
 <br>
 
-```
-    https://github.com/Andrew-Ochieng/africana-restaurant-client
-```
-
 
 ## GitHub Pages:
-[THE WREAT](https://github.com/Andrew-Ochieng/the-wreat)
+[Africana Restaurant](https://github.com/Andrew-Ochieng/africana-restaurant-client)
 
+<br />
 
 ## Contact
 
@@ -65,10 +62,8 @@ Your app is ready to be deployed!
 [Twitter](https://twitter.com/dev__drew) | 
 [Github](https://github.com/Andrew-Ochieng)
 
-## Hosted Api
-[Africana Restaurant](https://africana-restaurant-client.vercel.app/)
 
-If you want to use a specified object you can add that at the end of the endpoint eg. for energy, it will be https://africana-restaurant-client.vercel.app/. There are five obects to choose from eg. energy, agriculture, transport, real-estate & waste-management.
+<br />
 
 ## Hosted Live Link
 
