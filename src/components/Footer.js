@@ -1,10 +1,27 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
     return ( 
         <>
             <div>
-                <h1 className="text-blue-500 font-medium text-lg">
-                    Footer section here...
-                </h1>
+                <footer>
+                    <div>
+                        <div>
+                            Social Icons here
+                        </div>
+                        <div>
+                            <Link to='/termsandconditions'>
+                                Terms & Conditions
+                            </Link>
+                            <Link to='/paymentandrefunds'>
+                                Payment & Refunds
+                            </Link>
+                            <Link to='/becomerider'>
+                                Become A Rider
+                            </Link>
+                        </div>
+                    </div> 
+                </footer>
             </div>
         </>
      );
