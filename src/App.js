@@ -2,11 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import About from './pages/About';
 import Contact from './pages/Contact';
+import About from './pages/About';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import Reviews from './pages/Reviews';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
           <Route path="/home" element={ <Home /> } />
           <Route path="/about" element={ <About /> } />
           <Route path="/menu" element={ <Menu /> } />
-          <Route path="/reviews" element={ <Reviews /> } />
           <Route path="/contact" element={ <Contact /> } />
-          <Route path="/reserve" element={ <Reviews />   } />
+          <Route path="/signin" element={ <SignIn /> } />
+          <Route path="/signup" element={ <SignUp /> } />
         </Routes>
         <Footer />
       </BrowserRouter>
