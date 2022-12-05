@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai"
+import { FaRegUser } from "react-icons/fa"
+
 
 const Navbar = () => {
     const menuRef = useRef()
@@ -25,17 +28,24 @@ const Navbar = () => {
 
                     <div ref={menuRef} className="md:flex hidden ">
                         <ul className="md:flex items-center md:text-lg font-medium">
-                            <li className='md:mx-8 mx-2 md:my-0 my-2 hover:text-white duration-500'>
+                            <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500'>
                                 <Link to='/menu'>Menu</Link>
                             </li>
-                            <li className='md:mx-8 mx-2 md:my-0 my-2 hover:text-white duration-500'>
+                            <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500'>
                                 <Link to='/about'>About</Link>
                             </li>
-                            <li className='md:mx-8 mx-2 md:my-0 my-2 hover:text-white duration-500'>
+                            <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500'>
                                 <Link to='/contact'>Contact</Link>
                             </li>
-                            <li className='md:mx-3 mx-1 md:my-0 my-2 hover:text-white duration-500 mt-4'>
-                                <Link to='/signin' className="border-4 border-green-500 px-4 py-1 hover:bg-green-500 hover:text-white duration-500 hover:text-300 rounded-lg">Order</Link>
+                            <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500 md:text-2xl '>
+                                <Link to=''>
+                                    <AiOutlineShoppingCart />
+                                </Link>
+                            </li>
+                            <li className='md:mx-3 mx-1 md:my-0 my-2 text-white hover:text-gray-900 duration-300 p-3 border-2 hover:border-gray-900 rounded-full'>
+                                <Link to='/signin' className="md:text-xl text-lg">
+                                    <FaRegUser />
+                                </Link>
                             </li>
                         </ul>
                     </div>
