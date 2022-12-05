@@ -7,7 +7,7 @@ import Enjoy from "../assets/orderprocess/04.jpg"
 const OrderProcess = () => {
     return ( 
         <>
-            <div className="mx-8">
+            <div className="mx-8 md:py-8 py-4">
                 <h2 className="text-center md:text-3xl text-2xl text-gray-900 mb-2 font-semibold">How it Works</h2>
                 <p className="text-center">Completely network impactful users whereas next-generation applications engage out thinking via tactical action. </p>
                 <div className="md:flex justify-center items-center">
