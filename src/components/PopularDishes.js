@@ -1,10 +1,13 @@
 import PopularDishesImg from "../assets/menu-list.jpg"
 import { Link } from "react-router-dom";
 
-const PopularDishes = ({menus}) => {
+const PopularDishes = ({menus, loading, error}) => {
     return ( 
         <>
             <div className="relative ">
+                {loading && <h3>Loading data...</h3>}
+                { error && <h4 className="text-red-500">{ error }</h4>}
+
                 <img src={PopularDishesImg} alt="" />
                 <div className="absolute md:top-16 top-4 left-0 right-0 z-24 bg-white flex flex-col justify-center items-center md:py-12 py-8">
                     <div>

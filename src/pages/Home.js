@@ -2,14 +2,15 @@ import Hero from "../components/Hero";
 import OrderProcess from "../components/OrderProcess";
 import PopularDishes from "../components/PopularDishes";
 
-const Home = ({menus}) => {
+const Home = ({menus, loading, error}) => {
 
 
     return ( 
         <>
             <div>
+                
                 <Hero />
-                <PopularDishes menus={menus}  />
+                <PopularDishes menus={menus} loading={loading} error={error} />
                 <OrderProcess />
 
             </div>

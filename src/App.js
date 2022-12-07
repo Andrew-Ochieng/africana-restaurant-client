@@ -14,8 +14,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import UseFetch from './components/UseFetch';
 
 function App() {
-  const { data: menus } = UseFetch("/menus")
-  const { data: menu_items } = UseFetch("/menu_items")
+  const { data: menus, loading, error } = UseFetch("/menus")
 
 
   return (
@@ -23,9 +22,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={ <Home menus={menus} /> } />
+          <Route path="/" element={ <Home menus={menus} loading={loading} error={error} /> } />
           <Route path="/about" element={ <About /> } />
-          <Route path="/menu" element={ <Menu menu_items={menu_items} /> } />
+          <Route path="/menu" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/signin" element={ <SignIn /> } />
           <Route path="/signup" element={ <SignUp /> } />
