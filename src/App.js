@@ -11,16 +11,21 @@ import SignUp from './pages/SignUp';
 import BecomeRider from './pages/rider/BecomeRider';
 import PaymentAndRefunds from './pages/PaymentAndRefunds';
 import TermsAndConditions from './pages/TermsAndConditions';
+import UseFetch from './components/UseFetch';
 
 function App() {
+  const { data: menus } = UseFetch("/menus")
+  const { data: menu_items } = UseFetch("/menu_items")
+
+
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={ <Home /> } />
+          <Route path="/" element={ <Home menus={menus} /> } />
           <Route path="/about" element={ <About /> } />
-          <Route path="/menu" element={ <Menu /> } />
+          <Route path="/menu" element={ <Menu menu_items={menu_items} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/signin" element={ <SignIn /> } />
           <Route path="/signup" element={ <SignUp /> } />
