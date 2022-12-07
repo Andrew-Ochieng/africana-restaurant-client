@@ -15,7 +15,7 @@ const Footer = () => {
                             <BsInstagram className="mx-4 my-2 md:text-2xl text-xl" />
                             <BsTwitter className="mx-4 my-2 md:text-2xl text-xl" />
                         </div>
-                        <div className="md:flex justify-center items-center md:space-x-8 space-x-4 md:text-base text-sm">
+                        <div className="md:flex justify-center items-center text-center md:space-x-8 space-x-4 md:text-base text-sm">
                             <Link to='/termsandconditions'>
                                 Terms & Conditions
                             </Link>
