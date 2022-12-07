@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
-import { FaRegUser } from "react-icons/fa"
+import { FaSignInAlt } from "react-icons/fa"
+import { AiOutlineUserAdd } from "react-icons/ai"
 
 
 const Navbar = () => {
@@ -38,13 +39,18 @@ const Navbar = () => {
                                 <Link to='/contact'>Contact</Link>
                             </li>
                             <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500 md:text-2xl '>
-                                <Link to=''>
+                            <Link to='' className="md:text-2xl text-xl text-gray-800 hover:text-green-400 ">
                                     <AiOutlineShoppingCart />
                                 </Link>
                             </li>
-                            <li className='md:mx-3 mx-1 md:my-0 my-2 text-white hover:text-gray-900 duration-300 p-3 border-2 hover:border-gray-900 rounded-full'>
-                                <Link to='/signin' className="md:text-xl text-lg">
-                                    <FaRegUser />
+                            <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
+                                <Link to='/signup' className="md:text-3xl text-xl text-white hover:text-green-400 ">
+                                    <AiOutlineUserAdd />
+                                </Link>
+                            </li>
+                            <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
+                                <Link to='/signin' className="md:text-2xl text-xl text-white hover:text-green-400 ">
+                                    <FaSignInAlt />
                                 </Link>
                             </li>
                         </ul>
