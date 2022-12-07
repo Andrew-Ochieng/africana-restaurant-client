@@ -6,7 +6,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
-import SignIn from './pages/SignIn';
+import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import BecomeRider from './pages/rider/BecomeRider';
 import PaymentAndRefunds from './pages/PaymentAndRefunds';
@@ -26,7 +26,7 @@ function App() {
           <Route path="/about" element={ <About /> } />
           <Route path="/menu" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
-          <Route path="/signin" element={ <SignIn /> } />
+          <Route path="/login" element={ <Login /> } />
           <Route path="/signup" element={ <SignUp /> } />
 
           <Route path="/termsandconditions" element={ <TermsAndConditions /> } />
