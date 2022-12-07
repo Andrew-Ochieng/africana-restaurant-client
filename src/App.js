@@ -12,22 +12,34 @@ import BecomeRider from './pages/rider/BecomeRider';
 import PaymentAndRefunds from './pages/PaymentAndRefunds';
 import TermsAndConditions from './pages/TermsAndConditions';
 import UseFetch from './components/UseFetch';
+import { useState, useEffect } from 'react';
 
 function App() {
   const { data: menus, loading, error } = UseFetch("/menus")
+  const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          // console.log(user)
+          setUser(user)
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar  />
         <Routes>
           <Route path="/" element={ <Home menus={menus} loading={loading} error={error} /> } />
           <Route path="/about" element={ <About /> } />
           <Route path="/menu" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
-          <Route path="/login" element={ <Login /> } />
-          <Route path="/signup" element={ <SignUp /> } />
+          <Route path="/login" element={ <Login setUser={setUser} /> } />
+          <Route path="/signup" element={ <SignUp setUser={setUser} /> } />
 
           <Route path="/termsandconditions" element={ <TermsAndConditions /> } />
           <Route path="/paymentandrefunds" element={ <PaymentAndRefunds /> } />

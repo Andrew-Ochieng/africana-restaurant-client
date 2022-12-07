@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({setUser}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 

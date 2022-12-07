@@ -3,21 +3,23 @@ import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { FaSignInAlt } from "react-icons/fa"
 import { AiOutlineUserAdd } from "react-icons/ai"
+import { GoThreeBars } from "react-icons/go"
 
 
-const Navbar = () => {
+const Navbar = ({user, setUser}) => {
     const menuRef = useRef()
     const showMenu = () => {
         menuRef.current.classList.toggle("hidden")
     }
 
     function handleLogoutClick() {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
-          if (r.ok) {
-            setUser(null);
-          }
-        });
-      }
+        fetch("/logout", { method: "DELETE" })
+            .then((res) => {
+                if (res.ok) {
+                    setUser(null);
+                }
+            });
+    }
 
     return ( 
         <>
@@ -30,8 +32,8 @@ const Navbar = () => {
                             </span> Restaurant
                         </Link>
                         <button onClick={showMenu} className="md:hidden">
-                            <i className="text-xl fa fa-bars"></i> 
-                            {/* <i className="fa fa-times"></i> */}
+                            <GoThreeBars />
+                            {/* <i className="text-xl fa fa-bars"></i>  */}
                         </button>
                     </div>
 
@@ -51,7 +53,7 @@ const Navbar = () => {
                                     <AiOutlineShoppingCart />
                                 </Link>
                             </li>
-                            <div>
+                            <li>
                                 {user ? (
                                     <button 
                                         onClick={handleLogoutClick}
@@ -61,7 +63,7 @@ const Navbar = () => {
                                     </button>
                                     ) : (
                                     <>
-                                        <ul>
+                                        <ul className="md:flex items-center md:text-lg font-medium">
                                             <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
                                                 <Link to='/signup' className="md:text-3xl text-xl text-white hover:text-green-400 ">
                                                     <AiOutlineUserAdd />
@@ -75,7 +77,7 @@ const Navbar = () => {
                                         </ul>
                                     </>
                                 )}
-                            </div>
+                            </li>
                             
                         </ul>
                     </div>

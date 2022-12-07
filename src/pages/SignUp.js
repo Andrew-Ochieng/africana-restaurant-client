@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = () => {
+const SignUp = ({setUser}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -9,20 +9,22 @@ const SignUp = () => {
     function handleSubmit(e) {
         e.preventDefault();
         fetch("/signup", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            username,
-            password,
-            password_confirmation: passwordConfirmation,
-        }),
-        }).then((r) => {
-        if (r.ok) {
-            r.json().then((user) => setUser(user));
-        }
-        });
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                password_confirmation: passwordConfirmation,
+            }),
+        })
+            .then((res) => {
+                if (res.ok) {
+                    res.json()
+                    .then((user) => setUser(user));
+                }
+            });
     }
     return ( 
         <>
