@@ -13,6 +13,7 @@ import PaymentAndRefunds from './pages/PaymentAndRefunds';
 import TermsAndConditions from './pages/TermsAndConditions';
 import UseFetch from './components/UseFetch';
 import { useState, useEffect } from 'react';
+import Order from './components/Order';
 
 function App() {
   const { data: menus, loading, error } = UseFetch("/menus")
@@ -39,7 +40,7 @@ function App() {
           <Route path="/menu" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/login" element={ <Login setUser={setUser} /> } />
-          {/* <Route path="/signup" element={ <SignUp setUser={setUser} /> } /> */}
+          <Route path="/menu_items/:id" element={ <Order menus={menus} loading={loading} /> } />
 
           <Route path="/termsandconditions" element={ <TermsAndConditions /> } />
           <Route path="/paymentandrefunds" element={ <PaymentAndRefunds /> } />

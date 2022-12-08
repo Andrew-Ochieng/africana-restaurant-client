@@ -60,7 +60,7 @@ const LoginForm = ({setUser}) => {
                     <div>
                         <h3>
                             Don't have an account? 
-                            <Link to="/signup" className="text-red-500 font-medium mx-2">
+                            <Link to="/signupform" className="text-red-500 font-medium mx-2">
                                 Sign Up
                             </Link>
                         </h3>

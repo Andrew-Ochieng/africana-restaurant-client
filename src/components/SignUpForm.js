@@ -97,7 +97,7 @@ const SignUpForm = ({setUser}) => {
                     <div>
                         <h3>
                             Have an account already? 
-                            <Link to="/login" className="text-red-500 font-medium mx-2">
+                            <Link to="/loginform" className="text-red-500 font-medium mx-2">
                                 Login
                             </Link>
                         </h3>

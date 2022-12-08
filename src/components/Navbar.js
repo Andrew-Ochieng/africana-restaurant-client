@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
-import { FaSignInAlt } from "react-icons/fa"
-import { AiOutlineUserAdd } from "react-icons/ai"
+// import { FaSignInAlt } from "react-icons/fa"
+// import { AiOutlineUserAdd } from "react-icons/ai"
 import { GoThreeBars } from "react-icons/go"
 
 
@@ -65,13 +65,13 @@ const Navbar = ({user, setUser}) => {
                                     <>
                                         <ul className="md:flex items-center md:text-lg font-medium">
                                             <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
-                                                <Link to='/signup' className="md:text-3xl text-xl text-white hover:text-green-400 ">
-                                                    <AiOutlineUserAdd />
+                                                <Link to='/signup' className="md:text-xl text-lg text-white bg-gray-700 px-3 py-2 rounded-lg">
+                                                    Signup
                                                 </Link>
                                             </li>
                                             <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
-                                                <Link to='/login' className="md:text-2xl text-xl text-white hover:text-green-400 ">
-                                                    <FaSignInAlt />
+                                                <Link to='/login' className="md:text-xl text-lg text-gray-800 bg-green-400 py-2 px-3 rounded-lg">
+                                                    Login
                                                 </Link>
                                             </li>
                                         </ul>
