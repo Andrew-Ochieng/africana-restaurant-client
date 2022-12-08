@@ -5,9 +5,18 @@ const UseFetch = (url) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+    const header = new Headers({ "Access-Control-Allow-Origin": "*" });
+
+
     useEffect(() => {
         setTimeout(() => {
-            fetch(url)
+            fetch(url, {
+                header: header
+                // mode: 'no-cors',
+                // header: {
+                //     'Access-Control-Allow-Origin':'*',
+                // }
+            })
             .then((response) => {
                 if (!response.ok) {
                     throw Error('Could not fetch data from the resource!')

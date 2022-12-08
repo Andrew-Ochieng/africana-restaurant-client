@@ -3,6 +3,8 @@ import { useState } from "react";
 
 const SignUp = ({setUser}) => {
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
@@ -15,6 +17,8 @@ const SignUp = ({setUser}) => {
             },
             body: JSON.stringify({
                 username,
+                email,
+                address,
                 password,
                 password_confirmation: passwordConfirmation,
             }),
@@ -53,8 +57,8 @@ const SignUp = ({setUser}) => {
                             <input
                                 type="email"
                                 className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
-                                // value={email}
-                                // onChange={(e) => setUsername(e.target.value)}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
@@ -62,8 +66,8 @@ const SignUp = ({setUser}) => {
                             <input
                                 type="text"
                                 className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
-                                // value={address}
-                                // onChange={(e) => setUsername(e.target.value)}
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                             />
                         </div>
                         <div>

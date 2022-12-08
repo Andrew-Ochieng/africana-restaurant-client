@@ -2,16 +2,6 @@
 
 import MenuItem from "../components/MenuItem";
 
-//     console.log("from menus component: ", menus)
-//     return ( 
-//         <>
-
-//         </>
-//      );
-// }
- 
-// export default Menu;
-
 const Menu = ({menus, loading, error}) => {
 
 
