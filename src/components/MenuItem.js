@@ -5,7 +5,7 @@ const MenuItem = ({menu}) => {
         <>
             <div className="md:flex ">
                 {menu.menu_items && menu.menu_items.slice(0, 4).map((menu_item) => (
-                    <div key={menu_item.id} className='md:mr-6 my-6 bg-green-100 p-2 rounded-lg'>
+                    <div key={menu_item.id} className='md:mr-6 my-6 bg-green-100 p-4 rounded-lg'>
                         <div className="w-full">
                             <img className="rounded-xl " src={menu_item.image_url} alt="" />
                         </div>
