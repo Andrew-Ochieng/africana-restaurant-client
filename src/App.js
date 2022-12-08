@@ -7,7 +7,7 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Login from './pages/LogIn';
-// import SignUp from './pages/SignUp';
+import SignUp from './pages/SignUp';
 import BecomeRider from './pages/rider/BecomeRider';
 import PaymentAndRefunds from './pages/PaymentAndRefunds';
 import TermsAndConditions from './pages/TermsAndConditions';
@@ -40,6 +40,7 @@ function App() {
           <Route path="/menu" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/login" element={ <Login setUser={setUser} /> } />
+          <Route path="/signup" element={ <SignUp setUser={setUser} /> } />
           <Route path="/menu_items/:id" element={ <Order menus={menus} loading={loading} /> } />
 
           <Route path="/termsandconditions" element={ <TermsAndConditions /> } />

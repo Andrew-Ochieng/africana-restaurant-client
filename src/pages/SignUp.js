@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const SignUpForm = ({setUser}) => {
+const SignUp = ({setUser}) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
@@ -97,7 +97,7 @@ const SignUpForm = ({setUser}) => {
                     <div>
                         <h3>
                             Have an account already? 
-                            <Link to="/loginform" className="text-red-500 font-medium mx-2">
+                            <Link to="/login" className="text-red-500 font-medium mx-2">
                                 Login
                             </Link>
                         </h3>
@@ -109,4 +109,4 @@ const SignUpForm = ({setUser}) => {
     );
 }
  
-export default SignUpForm;
+export default SignUp;
