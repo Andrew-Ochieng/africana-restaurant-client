@@ -1,24 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
-// import { FaSignInAlt } from "react-icons/fa"
-// import { AiOutlineUserAdd } from "react-icons/ai"
 import { GoThreeBars } from "react-icons/go"
 
 
-const Navbar = ({user, setUser}) => {
+const Navbar = ({client, setClient}) => {
     const menuRef = useRef()
     const showMenu = () => {
         menuRef.current.classList.toggle("hidden")
     }
 
+    const navigate = useNavigate()
     function handleLogoutClick() {
-        fetch("/logout", { method: "DELETE" })
-            .then((res) => {
-                if (res.ok) {
-                    setUser(null);
-                }
-            });
+        fetch("https://afrikaan-restaurant-production.up.railway.app/logout", { method: "DELETE" })
+        .then((res) => {
+          if (res.ok) {
+            setClient(null);
+            navigate('/login')
+            localStorage.removeItem("me")
+          }
+        });
     }
 
     return ( 
@@ -33,7 +34,6 @@ const Navbar = ({user, setUser}) => {
                         </Link>
                         <button onClick={showMenu} className="md:hidden">
                             <GoThreeBars />
-                            {/* <i className="text-xl fa fa-bars"></i>  */}
                         </button>
                     </div>
 
@@ -54,13 +54,12 @@ const Navbar = ({user, setUser}) => {
                                 </Link>
                             </li>
                             <li className='md:my-0 my-2 p-3 rounded-full'>
-                                <Link to='/signup' className="md:text-xl text-lg text-white bg-gray-700 px-3 py-2 rounded-lg">
-                                    Signup
-                                </Link>
-                            </li>
-                            <li className='md:my-0 my-2 p-3 rounded-full'>
-                                <Link to='/login' className="md:text-xl text-lg text-gray-800 bg-green-400 py-2 px-3 rounded-lg">
-                                    Login
+                                <Link 
+                                    to='/logout' 
+                                    onClick={handleLogoutClick}
+                                    className="md:text-xl text-lg text-gray-100 bg-red-400 py-2 px-3 rounded-lg"
+                                    >
+                                    Logout
                                 </Link>
                             </li>
                             
@@ -68,7 +67,6 @@ const Navbar = ({user, setUser}) => {
                     </div>
                 </div>
             </nav>
-        
         </>
      );
 }
@@ -76,29 +74,3 @@ const Navbar = ({user, setUser}) => {
 export default Navbar;
 
 
-
-{/* <li>
-    {user ? (
-        <button 
-            onClick={handleLogoutClick}
-            className="md:mx-6 mx-2 md:my-0 my-2 px-4 py-2 hover:text-white duration-500"
-            >
-            Logout
-        </button>
-        ) : (
-        <>
-            <ul className="md:flex items-center md:text-lg font-medium">
-                <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
-                    <Link to='/signup' className="md:text-xl text-lg text-white bg-gray-700 px-3 py-2 rounded-lg">
-                        Signup
-                    </Link>
-                </li>
-                <li className='md:mx-3 mx-1 md:my-0 my-2 p-3 rounded-full'>
-                    <Link to='/login' className="md:text-xl text-lg text-gray-800 bg-green-400 py-2 px-3 rounded-lg">
-                        Login
-                    </Link>
-                </li>
-            </ul>
-        </>
-    )}
-</li> */}

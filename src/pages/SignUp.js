@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = ({setUser}) => {
+const SignUp = ({setClient}) => {
+    const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
@@ -10,7 +11,7 @@ const SignUp = ({setUser}) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("/signup", {
+        fetch("https://afrikaan-restaurant-production.up.railway.app/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -23,12 +24,15 @@ const SignUp = ({setUser}) => {
                 password_confirmation: passwordConfirmation,
             }),
         })
-            .then((res) => {
-                if (res.ok) {
-                    res.json()
-                    .then((user) => setUser(user));
-                }
-            });
+        .then((r) => {
+            if (r.ok) {
+              r.json().then((client) => {
+                  setClient(client)
+                  navigate('/')
+                  localStorage.setItem("me", JSON.stringify(client))
+              });
+            }
+        });
     }
 
     const imgUrl = "https://img.freepik.com/free-vector/realistic-illustration-roasted-turkey-grilled-chicken-with-spices-vegetables_1441-1789.jpg?w=1380&t=st=1670450632~exp=1670451232~hmac=69975cba4f68f9f6609e991e64b066995e838c70710200fbd6f427399c53fdfe"
@@ -36,7 +40,7 @@ const SignUp = ({setUser}) => {
     return ( 
         <>
             <div className="md:flex justify-center items-center md:mt-16 mt-12 mx-8">
-                <div className="md:w-1/3 ">
+                <div className="md:w-1/2 md:mr-8">
                     <img className="" src={imgUrl} alt="" />
                 </div>
 

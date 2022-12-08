@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { BsFacebook } from "react-icons/bs"
 import { BsInstagram } from "react-icons/bs"
 import { BsTwitter } from "react-icons/bs"
@@ -16,15 +15,15 @@ const Footer = () => {
                             <BsTwitter className="mx-4 my-2 md:text-2xl text-xl" />
                         </div>
                         <div className="md:flex justify-center items-center text-center md:space-x-8 space-x-4 md:text-base text-sm">
-                            <Link to='/termsandconditions'>
+                            <button>
                                 Terms & Conditions
-                            </Link>
-                            <Link to='/paymentandrefunds'>
+                            </button>
+                            <button>
                                 Payment & Refunds
-                            </Link>
-                            <Link to='/becomerider'>
+                            </button>
+                            <button>
                                 Become A Rider
-                            </Link>
+                            </button>
                         </div>
                     </div> 
                 </footer>

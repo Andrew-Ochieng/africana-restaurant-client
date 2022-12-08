@@ -1,32 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const LogIn = ({setUser}) => {
+const LogIn = ({setClient}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate()
 
         function handleSubmit(e) {
             e.preventDefault();
-            fetch("/login", {
+            fetch("https://afrikaan-restaurant-production.up.railway.app/login", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ username, password }),
             })
-                .then((res) => {
-                    if (res.ok) {
-                        res.json().then((user) => setUser(user));
-                    }
-                })
+            .then((r) => {
+                if (res.ok) {
+                res.json()
+                .then((client) => {
+                    setClient(client)
+                    navigate("/")
+                    localStorage.setItem("me", JSON.stringify(client))
+                })}
+            });
         }
 
-        const imgUrl = "https://img.freepik.com/free-vector/vegetables-colored-icons-flat-set_1284-34003.jpg?w=826&t=st=1670450499~exp=1670451099~hmac=659475ce48e960ba82b37847a67f46c552f3bd109ed902ce5169f1170c65b0f9"
+        const imgUrl = "https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png"
 
     return ( 
         <>
             <div className="md:flex justify-center items-center md:mt-16 mt-12 mx-8">
-                <div className="md:w-1/2">
+                <div className="md:w-1/3 lg:mr-16 md:mr-8">
                     <img src={imgUrl} alt="" />
                 </div>
 
@@ -54,7 +59,7 @@ const LogIn = ({setUser}) => {
                             />
                         </div>
                         <button type="submit" className="my-2 py-2 px-4 rounded-md uppercase font-light bg-green-500 w-full">
-                            Sign In
+                            Login
                         </button>
                     </form>
                     <div>

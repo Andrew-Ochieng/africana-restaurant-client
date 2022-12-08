@@ -3,10 +3,13 @@ import {FiHome} from "react-icons/fi"
 import {FaPhoneAlt} from "react-icons/fa"
 import {HiOutlineMailOpen} from "react-icons/hi"
 import {CgWebsite} from "react-icons/cg"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 const Contact = () => {
     return ( 
         <>
+            <Navbar />
             <div>
             <div className="" 
                     style={{
@@ -82,6 +85,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
      );
 }

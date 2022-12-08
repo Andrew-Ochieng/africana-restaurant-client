@@ -1,8 +1,12 @@
 import RiderImg from "../assets/rider-banner.jpg"
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const About = () => {
     return ( 
         <>
+            <Navbar client={client} setClient={setClient}/>
+
             <div>
                 <div className="" 
                     style={{
@@ -49,6 +53,8 @@ const About = () => {
 
 
             </div>
+
+            <Footer />
         </>
      );
 }

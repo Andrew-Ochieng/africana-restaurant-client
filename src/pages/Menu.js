@@ -1,4 +1,6 @@
+import Footer from "../components/Footer";
 import MenuItem from "../components/MenuItem";
+import Navbar from "../components/Navbar";
 // import UseFetch from "../components/UseFetch";
 // import { useParams } from "react-router-dom";
 
@@ -6,6 +8,7 @@ const Menu = ({menus, loading, error}) => {
 
     return ( 
         <>
+            <Navbar />
             <div>
                 {loading && <h3>Loading data...</h3>}
                 { error && <h4 className="text-red-500">{ error }</h4>}
@@ -24,6 +27,7 @@ const Menu = ({menus, loading, error}) => {
                     
                 </div>
             </div>
+            <Footer />
         </>
      );
 }
