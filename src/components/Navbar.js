@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import { GoThreeBars } from "react-icons/go"
 
 
-const Navbar = ({client, setClient}) => {
+const Navbar = ({user, setUser}) => {
     const menuRef = useRef()
     const showMenu = () => {
         menuRef.current.classList.toggle("hidden")
@@ -15,7 +15,7 @@ const Navbar = ({client, setClient}) => {
         fetch("https://afrikaan-restaurant-production.up.railway.app/logout", { method: "DELETE" })
         .then((res) => {
           if (res.ok) {
-            setClient(null);
+            setUser(null);
             navigate('/login')
             localStorage.removeItem("me")
           }

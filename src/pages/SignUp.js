@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = ({setClient}) => {
+const SignUp = ({setUser}) => {
     const navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -26,10 +26,10 @@ const SignUp = ({setClient}) => {
         })
         .then((r) => {
             if (r.ok) {
-              r.json().then((client) => {
-                  setClient(client)
+              r.json().then((user) => {
+                  setUser(user)
                   navigate('/')
-                  localStorage.setItem("me", JSON.stringify(client))
+                  localStorage.setItem("me", JSON.stringify(user))
               });
             }
         });

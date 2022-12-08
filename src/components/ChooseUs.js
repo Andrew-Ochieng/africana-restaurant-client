@@ -1,15 +1,15 @@
 const ChooseUs = () => {
-    const chooseData = {
-        // []
-    }
+    // const chooseData = {
+    //     // []
+    // }
     return ( 
         <>
             <div>
-                {chooseData.map((item) => (
+                {/* {chooseData.map((item) => (
                     <div>
                         <img src="" alt="" />
                     </div>
-                ))}
+                ))} */}
             </div>
         </>
      );

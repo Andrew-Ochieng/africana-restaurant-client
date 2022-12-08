@@ -1,8 +1,6 @@
 import Footer from "../components/Footer";
 import MenuItem from "../components/MenuItem";
 import Navbar from "../components/Navbar";
-// import UseFetch from "../components/UseFetch";
-// import { useParams } from "react-router-dom";
 
 const Menu = ({menus, loading, error}) => {
 

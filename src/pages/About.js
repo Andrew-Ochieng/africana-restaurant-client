@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const About = () => {
     return ( 
         <>
-            <Navbar client={client} setClient={setClient}/>
+            <Navbar />
 
             <div>
                 <div className="" 
