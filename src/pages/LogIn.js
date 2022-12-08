@@ -15,7 +15,7 @@ const LogIn = ({setUser}) => {
                 },
                 body: JSON.stringify({ username, password }),
             })
-            .then((r) => {
+            .then((res) => {
                 if (res.ok) {
                 res.json()
                 .then((user) => {
