@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react';
 import Order from './components/Order';
 
 function App() {
-  const { data: menus, loading, error } = UseFetch("/menus")
+  const { data: menus, loading, error } = UseFetch("https://afrikaan-restaurant-production.up.railway.app/menus")
   const [user, setUser] = useState(null)
 
   useEffect(() => {

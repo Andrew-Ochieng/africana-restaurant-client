@@ -7,9 +7,20 @@ const Contact = () => {
     return ( 
         <>
             <div>
-                <div>
-                    <img className="h-80 w-full bg-cover" src={ContactBanner} alt="" />
-
+            <div className="" 
+                    style={{
+                            backgroundImage: `url(${ContactBanner})`, 
+                            backgroundSize: `cover`,
+                            paddingTop: `100px`, 
+                            paddingBottom: `100px` 
+                        }}
+                    >
+                    <div className="flex justify-center lg:my-24 md:my-16 my-6">
+                        <h2 className="font-medium md:text-lg text-base text-white">
+                            Home - 
+                            <span className="text-green-500 mx-2">About Us</span>
+                        </h2>
+                    </div>
                 </div>
 
                 <div className="bg-green-50 flex justify-center items-center">

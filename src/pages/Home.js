@@ -10,8 +10,12 @@ const Home = ({menus, loading, error}) => {
             <div>
                 
                 <Hero />
-                <PopularDishes menus={menus} loading={loading} error={error} />
-                <OrderProcess />
+                <div className="flex justify-center">
+                    <PopularDishes menus={menus} loading={loading} error={error} />
+                </div>
+                <div>
+                    <OrderProcess />
+                </div>
 
             </div>
         </>

@@ -4,12 +4,20 @@ import { Link } from "react-router-dom";
 const PopularDishes = ({menus, loading, error}) => {
     return ( 
         <>
-            <div className="relative ">
+            <div className="" 
+                style={{
+                        backgroundImage: `url(${PopularDishesImg})`, 
+                        backgroundSize: `cover`,
+                        paddingTop: `50px`, 
+                        paddingBottom: `50px` 
+                    }}
+                >
+                
                 {loading && <h3>Loading data...</h3>}
                 { error && <h4 className="text-red-500">{ error }</h4>}
 
-                <img src={PopularDishesImg} alt="" />
-                <div className="absolute md:top-16 top-4 left-0 right-0 z-24 bg-white flex flex-col justify-center items-center md:py-12 py-8">
+                {/* <img className="h-full" src={PopularDishesImg} alt="" /> */}
+                <div className=" bg-white flex flex-col justify-center items-center md:my-4 md:mx-32 mx-8 rounded-xl md:py-12 py-8">
                     <div>
                         <h1 className="text-center md:text-3xl text-2xl text-gray-900 mb-2 font-semibold">Browse Menu</h1>
                         <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe nemo eaque blanditiis. Voluptas, consectetur saepe.</p>
