@@ -24,9 +24,10 @@ const SignUp = ({setUser}) => {
                 password_confirmation: passwordConfirmation,
             }),
         })
-        .then((r) => {
-            if (r.ok) {
-              r.json().then((user) => {
+        .then((res) => {
+            if (res.ok) {
+              res.json().then((user) => {
+                console.log(user)
                   setUser(user)
                   navigate('/')
                   localStorage.setItem("me", JSON.stringify(user))

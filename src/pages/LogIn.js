@@ -19,9 +19,10 @@ const LogIn = ({setUser}) => {
                 if (res.ok) {
                 res.json()
                 .then((user) => {
+                    console.log(user)
+                    localStorage.setItem("me", JSON.stringify(user))
                     setUser(user)
                     navigate("/")
-                    localStorage.setItem("me", JSON.stringify(user))
                 })}
             });
         }
