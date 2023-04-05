@@ -2,25 +2,33 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { GoThreeBars } from "react-icons/go"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { auth } from "../firebase/config";
 
-
-const Navbar = ({user, setUser}) => {
+const Navbar = () => {
     const menuRef = useRef()
     const showMenu = () => {
         menuRef.current.classList.toggle("hidden")
     }
 
     const navigate = useNavigate()
-    function handleLogoutClick() {
-        fetch("http://localhost:4000/logout", { method: "DELETE" })
-        .then((res) => {
-          if (res.ok) {
-            setUser(null);
-            navigate('/login')
-            localStorage.removeItem("me")
-          }
-        });
+    const [user, loading, error] = useAuthState(auth)
+
+    const handleLogout = () => {
+        auth.signOut();
+        navigate("/login")
     }
+
+    // function handleLogoutClick() {
+    //     fetch("http://localhost:4000/logout", { method: "DELETE" })
+    //     .then((res) => {
+    //       if (res.ok) {
+    //         setUser(null);
+    //         navigate('/login')
+    //         localStorage.removeItem("me")
+    //       }
+    //     });
+    // }
 
     return ( 
         <>
@@ -57,7 +65,7 @@ const Navbar = ({user, setUser}) => {
                             <li className='md:my-0 my-2 p-3 rounded-full'>
                                 <Link 
                                     to='/logout' 
-                                    onClick={handleLogoutClick}
+                                    onClick={() => handleLogout()}
                                     className="md:text-xl text-lg text-gray-100 bg-red-400 py-2 px-3 rounded-lg"
                                     >
                                     Logout

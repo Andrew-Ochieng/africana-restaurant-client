@@ -1,31 +1,42 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/config";
 
-const LogIn = ({setUser}) => {
-    const [username, setUsername] = useState("");
+const LogIn = () => {
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-        function handleSubmit(e) {
-            e.preventDefault();
-            fetch("https://afrikaan-restaurant-production.up.railway.app/login", {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ username, password }),
+    const handleLogin = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((auth) => {
+                navigate("/")
             })
-            .then((res) => {
-                if (res.ok) {
-                res.json()
-                .then((user) => {
-                    console.log(user)
-                    localStorage.setItem("me", JSON.stringify(user))
-                    setUser(user)
-                    navigate("/")
-                })}
-            });
-        }
+            .catch((error) => console.log(error))
+    }
+
+
+        // function handleSubmit(e) {
+        //     e.preventDefault();
+        //     fetch("http://localhost:4000/login", {
+        //         method: "POST",
+        //         headers: {
+        //         "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify({ email, password }),
+        //     })
+        //     .then((res) => {
+        //         if (res.ok) {
+        //         res.json()
+        //         .then((user) => {
+        //             console.log(user)
+        //             localStorage.setItem("me", JSON.stringify(user))
+        //             setUser(user)
+        //             navigate("/")
+        //         })}
+        //     });
+        // }
 
         const imgUrl = "https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png"
 
@@ -37,17 +48,17 @@ const LogIn = ({setUser}) => {
                 </div>
 
                 <div className="flex flex-col">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleLogin}>
                         <h1 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
                             Login
                         </h1>
                         <div>   
-                            <label htmlFor="username">Username</label><br />
+                            <label htmlFor="email">email</label><br />
                             <input
-                                type="text"
+                                type="email"
                                 className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>

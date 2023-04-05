@@ -5,9 +5,6 @@ const UseFetch = (url) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    // const header = new Headers({ "Access-Control-Allow-Origin": "*" });
-
-
     useEffect(() => {
         setTimeout(() => {
             fetch(url)
