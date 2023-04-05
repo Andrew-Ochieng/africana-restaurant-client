@@ -12,7 +12,7 @@ const Navbar = ({user, setUser}) => {
 
     const navigate = useNavigate()
     function handleLogoutClick() {
-        fetch("https://afrikaan-restaurant-production.up.railway.app/logout", { method: "DELETE" })
+        fetch("http://localhost:4000/logout", { method: "DELETE" })
         .then((res) => {
           if (res.ok) {
             setUser(null);
@@ -28,9 +28,10 @@ const Navbar = ({user, setUser}) => {
                 <div className="navbar md:flex  justify-around items-center md:mx-8 mx-4" >
                     <div className='flex items-center justify-between'>
                         <Link to='/' className='md:text-2xl text-xl font-semibold uppercase'>
-                            <span className="font-extralight lowercase md:text-3xl text-2xl">
-                                Afrikaan
-                            </span> Restaurant
+                            <span className="font-[Merienda] font-extrabold lowercase md:text-3xl text-2xl">
+                                Afrikaan 
+                            </span> 
+                            <span className="pl-2 text-white font-bold font-[Roboto Condensed]">Restaurant</span>
                         </Link>
                         <button onClick={showMenu} className="md:hidden">
                             <GoThreeBars />

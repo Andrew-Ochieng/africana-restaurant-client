@@ -10,11 +10,11 @@ import { useState, useEffect } from 'react';
 import Cart from './components/Order';
 
 function App() {
-  const { data: menus, loading, error } = UseFetch("https://afrikaan-restaurant-production.up.railway.app/menus")
+  const { data: menus, loading, error } = UseFetch("http://localhost:4000/menus")
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    fetch("https://afrikaan-restaurant-production.up.railway.app/me")
+    fetch("http://localhost:4000/me")
     .then((res) => {
       if (res.ok) {
         res.json()
