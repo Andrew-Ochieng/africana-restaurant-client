@@ -35,7 +35,7 @@ const MenuItem = ({menus, loading, error}) => {
                 ) : (
                     <div key={menu.id} className='grid md:grid-cols-2 md:gap-8 gap-4 '>
                         <div className="w-full">
-                            <img className="rounded-xl " src={menu.image_url} alt="" />
+                            <img className="rounded-xl " src={menu.imageUrl} alt="" />
                         </div>
                         <div className="py-2 px-3">
                             <h3 className="text-gray-700 md:text-xl text-lg font-semibold">{menu.name}</h3>

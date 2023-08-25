@@ -24,9 +24,9 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="md:flex justify-around md:mx-16 mx-8 my-12">
+                <div className="grid md:grid-cols-2 gap-8 md:mx-16 mx-8 my-12">
                     {/* <div className="md:w-1/3"> */}
-                        <img className="md:w-1/3" src={RiderImg} alt="" />
+                        <img className="md:w-2/3 " src={RiderImg} alt="" />
                     {/* </div> */}
                     <div className="md:mx-16 mx-0 md:mt-0 mt-8 flex flex-col justify-center md:text-left text-center">
                         <h1 className="md:text-5xl text-3xl font-bold text-gray-700">Afrikaan Restaurant</h1>

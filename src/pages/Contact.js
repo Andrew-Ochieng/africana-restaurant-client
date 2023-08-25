@@ -22,7 +22,7 @@ const Contact = () => {
                     <div className="flex justify-center lg:my-24 md:my-16 my-6">
                         <h2 className="font-medium md:text-lg text-base text-white">
                             Home - 
-                            <span className="text-green-500 mx-2">About Us</span>
+                            <span className="text-green-500 mx-2">Contact Us</span>
                         </h2>
                     </div>
                 </div>
@@ -69,15 +69,19 @@ const Contact = () => {
                         <div>
                             <h2 className="md:text-xl text-lg font-semibold text-gray-500">Send Us A Message</h2>
                             <form action="#">
-                                <div className="my-4">
-                                    <input className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full" type="text" placeholder="Enter Name..."/>
-                                    <input className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full" type="email" name="" placeholder="Enter Email..."/>
+                                <div className="my-4 md:space-x-4">
+                                    <input className="input w-full border-1 border-gray-400" type="text" placeholder="Enter Name..."/>
+                                </div>
+                                <div className="my-4 md:space-x-4">
+                                    <input className="input w-full border-1 border-gray-400" type="email" name="" placeholder="Enter Email..."/>
                                 </div>
                                 <div className="my-4">
-                                    <input className="border-2 border-gray-400 rounded-md py-2 px-4 w-full" type="text" name="subject" placeholder="Enter Subject..." />
+                                    <input className="input w-full border-1 border-gray-400" type="text" name="subject" placeholder="Enter Subject..." />
                                 </div>
-                                <textarea className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full" name="message" cols="30" rows="4" placeholder="Enter Message"></textarea>
-                                <button className="py-2 px-4 rounded-md uppercase font-light bg-green-500 w-full">
+                                <div>
+                                <textarea className="input border-1 border-gray-400" name="message" cols="30" rows="4" placeholder="Enter Message"></textarea>
+                                </div>
+                                <button className="mt-4 py-2 px-4 rounded-md uppercase font-light bg-green-500 ">
                                     Submit Message
                                 </button>
                             </form>

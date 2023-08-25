@@ -1,21 +1,46 @@
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { supabase } from '../supabase/supabaseConfig';
 
 const AddMenus = () => {
-    const [menuName, setMenuName] = useState('')
+    const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
-    const handleAddMenus = () => {
-        toast.success('New Menu Addedd Successfully')
+    const handleAddMenus = async (e) => {
+        e.preventDefault()
+
+        if (name && description && price && imageUrl !== "") {
+            const { data, error } = await supabase
+                .from('menus')
+                .insert([{name, description, price, imageUrl}])
+                .select()
+
+            if (data) {
+                console.log(data)
+            }
+
+            if (error) {
+                console.log(error)
+            }
+            
+            toast.success('New Menu Addedd Successfully')
+
+            setName('')
+            setPrice('')
+            setImageUrl('')
+            setDescription('')
+        } else {
+            toast.error('Please fill in all inputs')
+        }
     }
 
     return ( 
         <>
             <div className="flex flex-col items-center md:m-20 my-10 mx-4">
-                <h3 className="section-title">Create New Menu...</h3>
+                <h3 className="md:mb-8 mb-4 font-semibold md:text-3xl text-xl text-gray-700">Add New Menu</h3>
                 <ToastContainer 
                     position = 'top-center'
                     autoClose = {2000}
@@ -33,8 +58,8 @@ const AddMenus = () => {
                                 className="input w-full border border-cyan-500" 
                                 type="text" 
                                 name="name" 
-                                value={menuName}
-                                onChange={(e) => setMenuName(e.target.value)}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 placeholder="Enter name..." 
                                 required 
                             />
@@ -43,7 +68,7 @@ const AddMenus = () => {
                             <input 
                                 className="input w-full border border-cyan-500" 
                                 type="number" 
-                                name="name" 
+                                name="price" 
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 placeholder="Enter price..." 
@@ -54,9 +79,9 @@ const AddMenus = () => {
                             <input 
                                 className="input w-full border border-cyan-500" 
                                 type="text" 
-                                name="name" 
+                                name="image-url" 
                                 value={imageUrl}
-                                onChange={(e) => setMenuName(e.target.value)}
+                                onChange={(e) => setImageUrl(e.target.value)}
                                 placeholder="Enter image_url..." 
                                 required 
                             />
@@ -64,7 +89,7 @@ const AddMenus = () => {
                         <div className="label">
                             <textarea 
                                 className="border border-cyan-500 py-2 px-3 rounded-lg w-full outline-none" 
-                                name="message" 
+                                name="description" 
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 placeholder="Write content..." 
