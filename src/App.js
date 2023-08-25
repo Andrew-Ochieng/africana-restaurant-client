@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import MenuItem from './components/MenuItem';
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase/supabaseConfig';
+import AddMenus from './pages/AddMenus';
 
 function App() {
   const [menus, setMenus] = useState([])
@@ -45,6 +46,8 @@ function App() {
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
           <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
+
+          <Route path='/add-menu' element={ <AddMenus /> } />
         </Routes>
       </BrowserRouter>
     </div>
