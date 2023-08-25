@@ -20,11 +20,10 @@ function App() {
       if (data) {
         setMenus(data)
         setLoading(false)
-        console.log(data)
       }
 
       if (error) {
-        setMenus(null)
+        setLoading(false)
         setError(true)
         console.log(error)
       }
@@ -32,12 +31,6 @@ function App() {
 
     getMenuItems()
   }, [])
-
-
-  // console.log(supabase)
-
-
-
 
 
   return (
