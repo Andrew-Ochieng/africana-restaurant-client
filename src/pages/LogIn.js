@@ -1,19 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/config";
+// import { auth } from "../firebase/config";
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const handleLogin = () => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((auth) => {
-                navigate("/")
-            })
-            .catch((error) => console.log(error))
+    //     signInWithEmailAndPassword(auth, email, password)
+    //         .then((auth) => {
+    //             navigate("/")
+    //         })
+    //         .catch((error) => console.log(error))
     }
 
 

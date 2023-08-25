@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { auth } from "../firebase/config"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../firebase/config"
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 const SignUp = () => {
@@ -10,19 +10,19 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
 
     const handleSubmit = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user)
-                alert("User account has been succesfully created")
-                navigate("/")
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                // const errorMessage = error.message;
-                alert(errorCode)
-            });
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then((userCredential) => {
+        //         // Signed in 
+        //         const user = userCredential.user;
+        //         console.log(user)
+        //         alert("User account has been succesfully created")
+        //         navigate("/")
+        //     })
+        //     .catch((error) => {
+        //         const errorCode = error.code;
+        //         // const errorMessage = error.message;
+        //         alert(errorCode)
+        //     });
     }
 
     // function handleSubmit(e) {

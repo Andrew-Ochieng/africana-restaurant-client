@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { GoThreeBars } from "react-icons/go"
-import { useAuthState } from "react-firebase-hooks/auth"
-import { auth } from "../firebase/config";
 
 const Navbar = () => {
     const menuRef = useRef()
@@ -12,23 +10,10 @@ const Navbar = () => {
     }
 
     const navigate = useNavigate()
-    const [user, loading, error] = useAuthState(auth)
 
     const handleLogout = () => {
-        auth.signOut();
         navigate("/login")
     }
-
-    // function handleLogoutClick() {
-    //     fetch("http://localhost:4000/logout", { method: "DELETE" })
-    //     .then((res) => {
-    //       if (res.ok) {
-    //         setUser(null);
-    //         navigate('/login')
-    //         localStorage.removeItem("me")
-    //       }
-    //     });
-    // }
 
     return ( 
         <>
@@ -49,7 +34,7 @@ const Navbar = () => {
                     <div ref={menuRef} className="md:flex hidden ">
                         <ul className="md:flex items-center md:text-lg font-medium">
                             <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500'>
-                                <Link to='/menu'>Menu</Link>
+                                <Link to='/menus'>Menu</Link>
                             </li>
                             <li className='md:mx-6 mx-2 md:my-0 my-2 hover:text-white duration-500'>
                                 <Link to='/about'>About</Link>
