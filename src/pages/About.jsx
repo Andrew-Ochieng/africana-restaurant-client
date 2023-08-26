@@ -5,8 +5,6 @@ import Footer from "../components/Footer";
 const About = () => {
     return ( 
         <>
-            <Navbar />
-
             <div>
                 <div className="" 
                     style={{
@@ -53,8 +51,6 @@ const About = () => {
 
 
             </div>
-
-            <Footer />
         </>
      );
 }

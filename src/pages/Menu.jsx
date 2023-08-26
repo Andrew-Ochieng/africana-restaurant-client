@@ -1,5 +1,3 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 
@@ -7,7 +5,6 @@ const Menu = ({menus, loading, error}) => {
 
     return ( 
         <>
-            <Navbar />
             <div className="md:m-8 m-4">
                 <h1 className="text-green-500 font-semibold text-xl py-2 px-3">
                     Browse All Menus & Menu Items
@@ -44,8 +41,6 @@ const Menu = ({menus, loading, error}) => {
                 )}
                 
             </div>
-                
-            <Footer />
         </>
      );
 }

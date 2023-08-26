@@ -9,8 +9,6 @@ import Footer from "../components/Footer"
 const Contact = () => {
     return ( 
         <>
-            <Navbar />
-            <div>
             <div className="" 
                     style={{
                             backgroundImage: `url(${ContactBanner})`, 
@@ -88,8 +86,6 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
         </>
      );
 }

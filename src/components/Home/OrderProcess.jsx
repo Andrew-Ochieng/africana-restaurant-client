@@ -1,7 +1,7 @@
-import Order from "../assets/orderprocess/01.jpg"
-import Delivery from "../assets/orderprocess/02.jpg"
-import Pay from "../assets/orderprocess/03.jpg"
-import Enjoy from "../assets/orderprocess/04.jpg"
+import Order from "../../assets/orderprocess/01.jpg"
+import Delivery from "../../assets/orderprocess/02.jpg"
+import Pay from "../../assets/orderprocess/03.jpg"
+import Enjoy from "../../assets/orderprocess/04.jpg"
 
 
 const OrderProcess = () => {
