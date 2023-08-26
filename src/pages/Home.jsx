@@ -13,7 +13,7 @@ const Home = ({menus, loading, error, user}) => {
     return ( 
         <>
             
-            {   !user
+            {!user
                  ? 
                 <LogIn /> : 
                 

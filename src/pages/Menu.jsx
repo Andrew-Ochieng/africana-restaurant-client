@@ -12,7 +12,6 @@ const Menu = ({menus, loading, error}) => {
                 <h1 className="text-green-500 font-semibold text-xl py-2 px-3">
                     Browse All Menus & Menu Items
                 </h1>
-                { error && <h4 className="text-red-500">{ error }</h4>}
                 {loading ? (
                     <div className="pt-4 pr-4">
                         <FadeLoader 
@@ -24,7 +23,9 @@ const Menu = ({menus, loading, error}) => {
                         />
                     </div>
                 ) : (
+                    
                     <div className="grid md:grid-cols-4">
+                        { error && <h4 className="text-red-500">{ error }</h4>}
                         {menus && menus.map((menu_item, index) => (
                             <div key={index} className="m-4 py-2 px-3 rounded-xl ">
                                 <img className="rounded-xl w-full h-40 md:h-44" src={menu_item.imageUrl} alt="" />
