@@ -8,7 +8,7 @@ import SignUp from './pages/SignUp';
 import MenuItem from './components/Menu/MenuItem';
 import { useState, useEffect } from 'react';
 import { supabase } from './supabase/supabaseConfig';
-import AddMenus from './pages/AddMenus';
+import AddMenus from './pages/admin/AddMenus';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -52,7 +52,7 @@ function App() {
           <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
           <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
 
-          <Route path='/add-menu' element={ <AddMenus /> } />
+          <Route path='/admin/add-menu' element={ <AddMenus /> } />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -33,9 +33,9 @@ const MenuItem = ({menus, loading, error}) => {
                         data-testid="loader"
                     />
                 ) : (
-                    <div key={menu.id} className='grid md:grid-cols-2 md:gap-8 gap-4 '>
+                    <div key={menu.id} className='grid md:grid-cols-2  gap-4 '>
                         <div className="w-full">
-                            <img className="rounded-xl " src={menu.imageUrl} alt="" />
+                            <img className="rounded-xl h-80 w-80" src={menu.imageUrl} alt="" />
                         </div>
                         <div className="py-2 px-3">
                             <h3 className="text-gray-700 md:text-xl text-lg font-semibold">{menu.name}</h3>
