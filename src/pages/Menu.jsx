@@ -1,46 +1,49 @@
-import { Link } from "react-router-dom";
-import { FadeLoader } from "react-spinners";
+import { useState } from "react";
+import aboutBanner from "../assets/about-banner.jpg"
+import MenuList from "../components/Menu/MenuList";
 
 const Menu = ({menus, loading, error}) => {
+    const [search, setSearch] = useState('')
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value)
+    }
+    
+    const filteredMenus = menus.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
 
     return ( 
         <>
-            <div className="md:m-8 m-4">
-                <h1 className="text-green-500 font-semibold text-xl py-2 px-3">
-                    Browse All Menus & Menu Items
-                </h1>
-                {loading ? (
-                    <div className="pt-4 pr-4">
-                        <FadeLoader 
-                            color="#36d7b7" 
-                            loading={loading}
-                            size={50}
-                            aria-label="Loading Content..."
-                            data-testid="loader"
-                        />
+            <div className="hero md:h-64 h-32" style={{backgroundImage: `url(${aboutBanner})`}}>
+                <div className="hero-overlay bg-opacity-50"></div>
+                <div className=" text-neutral-content ">
+                    <div className="">
+                    <h1 className="mb-5 md:text-4xl text-2xl font-bold">All Foods</h1>
                     </div>
-                ) : (
-                    
-                    <div className="grid md:grid-cols-4">
-                        { error && <h4 className="text-red-500">{ error }</h4>}
-                        {menus && menus.map((menu_item, index) => (
-                            <div key={index} className="m-4 py-2 px-3 rounded-xl ">
-                                <img className="rounded-xl w-full h-40 md:h-44" src={menu_item.imageUrl} alt="" />
-                                <h3 className="text-gray-700 md:text-xl text-lg font-semibold">{menu_item.name}</h3>
-                                <p className="my-1 font-light text-sm">{menu_item.description.split(/\s+/).slice(0, 16).join(" ")}</p>
-                                <h4 className="text-green-500 font-medium mb-4">Ksh {menu_item.price}</h4>
-                                <Link 
-                                    to={`/menu_item/${menu_item.id}`}
-                                    className="btn bg-green-500 "
-                                >
-                                    More Details
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                
+                </div>
             </div>
+            
+            <div className="md:m-8 m-4 md:flex justify-between space-y-4">
+                <div>
+                    <input 
+                        value={search}
+                        onChange={handleSearch}
+                        type="search" 
+                        className="input border border-gray-300 w-full" 
+                        placeholder="Search foods.." 
+                    />
+                </div>
+
+                <select className="select select-bordered w-full max-w-xs">
+                    <option disabled selected>Categories</option>
+                    <option value=''>Salads</option>
+                    <option value=''>Meat</option>
+                    <option value=''>Soup</option>
+                    <option value=''>Vegan</option>
+                </select>
+            </div>
+
+            <MenuList filteredMenus={filteredMenus} loading={loading} error={error} />
+            
         </>
      );
 }

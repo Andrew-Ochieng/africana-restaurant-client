@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const menus = [
         {name: "Menu", route: "/menus"},
-        {name: "Cart", route: "/menus"},
+        {name: "Cart", route: "/cart"},
         {name: "About", route: "/about"},
         {name: "Contact", route: "/contact"},
     ]
