@@ -12,6 +12,7 @@ import AddMenus from './pages/admin/AddMenus';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import Cart from './components/Cart';
 
 function App() {
   const [menus, setMenus] = useState([])
@@ -43,7 +44,7 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <Routes>
-          <Route path="/logout" element={ <Login /> } />
+          <Route path='/cart' element={ <Cart  /> } />
           <Route path="/login" element={ <Login /> } />
           <Route path="/signup" element={ <SignUp /> } />
           <Route path="/about" element={ <About /> } />

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 import { useContext, useEffect, useState } from 'react'
+import { CartContext } from "../../Context/cart";
 
 const MenuList = ({filteredMenus, loading, error}) => {
     const { cartItems, addToCart } = useContext(CartContext)
+
 
 
     return ( 
@@ -20,7 +22,6 @@ const MenuList = ({filteredMenus, loading, error}) => {
                         />
                     </div>
                 ) : (
-                    
                     <div className="grid md:grid-cols-4 gap-4">
                         { error && <h4 className="text-red-500">{ error }</h4>}
                         {filteredMenus && filteredMenus.map((menuItem, index) => (
