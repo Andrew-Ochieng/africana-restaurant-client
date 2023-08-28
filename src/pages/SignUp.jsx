@@ -1,56 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { auth } from "../firebase/config"
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { supabase } from "../supabase/supabaseConfig";
 
 const SignUp = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = () => {
-        // createUserWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         // Signed in 
-        //         const user = userCredential.user;
-        //         console.log(user)
-        //         alert("User account has been succesfully created")
-        //         navigate("/")
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code;
-        //         // const errorMessage = error.message;
-        //         alert(errorCode)
-        //     });
-    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                emailRedirectTo: window.location.origin
+            }
+        })
 
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     fetch("http://localhost:4000/signup", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             username,
-    //             email,
-    //             address,
-    //             password,
-    //             password_confirmation: passwordConfirmation,
-    //         }),
-    //     })
-    //     .then((res) => {
-    //         if (res.ok) {
-    //           res.json().then((user) => {
-    //             console.log(user)
-    //               setUser(user)
-    //               navigate('/')
-    //               localStorage.setItem("me", JSON.stringify(user))
-    //           });
-    //         }
-    //     });
-    // }
+        if(data) {
+            console.log('You successfully created new account')
+            navigate('/login')
+        }
+
+        if (error) {
+            console.log('New user not created!')
+        }
+
+        
+    }
 
     const imgUrl = "https://img.freepik.com/free-vector/realistic-illustration-roasted-turkey-grilled-chicken-with-spices-vegetables_1441-1789.jpg?w=1380&t=st=1670450632~exp=1670451232~hmac=69975cba4f68f9f6609e991e64b066995e838c70710200fbd6f427399c53fdfe"
 
@@ -77,7 +54,7 @@ const SignUp = () => {
                             <label htmlFor="email">Email</label><br />
                             <input
                                 type="email"
-                                className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
+                                className="form-input"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -87,7 +64,7 @@ const SignUp = () => {
                             <input
                                 type="password"
                                 value={password}
-                                className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
+                                className="form-input"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>

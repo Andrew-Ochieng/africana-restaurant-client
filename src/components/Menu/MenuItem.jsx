@@ -12,6 +12,7 @@ const MenuItem = ({menus, loading, error}) => {
         menu = {}
     }
 
+
     const { navigate } = useNavigate()
     const handleAddToCart = () => {
         alert('Item successfully added to cart')
@@ -35,7 +36,7 @@ const MenuItem = ({menus, loading, error}) => {
                 ) : (
                     <div key={menu.id} className='grid md:grid-cols-2  gap-4 '>
                         <div className="w-full">
-                            <img className="rounded-xl h-80 w-80" src={menu.imageUrl} alt="" />
+                            <img className="rounded-xl h-80  object-cover" src={menu.imageUrl} alt="" />
                         </div>
                         <div className="py-2 px-3">
                             <h3 className="text-gray-700 md:text-xl text-lg font-semibold">{menu.name}</h3>

@@ -1,44 +1,36 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../firebase/config";
+import { supabase } from "../supabase/supabaseConfig";
 
 const LogIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
-    const handleLogin = () => {
-    //     signInWithEmailAndPassword(auth, email, password)
-    //         .then((auth) => {
-    //             navigate("/")
-    //         })
-    //         .catch((error) => console.log(error))
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        })
+
+        console.log(data)
+
+        if(data) {
+            console.log('User logged in successfully')
+            navigate('/menus')
+        }
+
+        if (error) {
+            console.log('You entered wrong password!')
+        }
+
+        
     }
 
 
-        // function handleSubmit(e) {
-        //     e.preventDefault();
-        //     fetch("http://localhost:4000/login", {
-        //         method: "POST",
-        //         headers: {
-        //         "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({ email, password }),
-        //     })
-        //     .then((res) => {
-        //         if (res.ok) {
-        //         res.json()
-        //         .then((user) => {
-        //             console.log(user)
-        //             localStorage.setItem("me", JSON.stringify(user))
-        //             setUser(user)
-        //             navigate("/")
-        //         })}
-        //     });
-        // }
 
-        const imgUrl = "https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png"
+    const imgUrl = "https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png"
 
     return ( 
         <>
@@ -56,7 +48,7 @@ const LogIn = () => {
                             <label htmlFor="email">email</label><br />
                             <input
                                 type="email"
-                                className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
+                                className="form-input"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
@@ -65,7 +57,7 @@ const LogIn = () => {
                             <label htmlFor="password">Password</label><br />
                             <input
                                 type="password"
-                                className="border-2 border-gray-400 rounded-md py-2 px-4 my-2 w-full"
+                                className="form-input"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />

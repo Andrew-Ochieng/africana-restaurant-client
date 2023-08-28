@@ -35,7 +35,9 @@ const Navbar = () => {
                                         <AiOutlineShoppingCart />
                                     </li>
                                     <li className="hover:text-white cursor-pointer">
-                                        <BiUserCircle />
+                                        <Link to='/login'>
+                                            <BiUserCircle />
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -70,7 +72,9 @@ const Navbar = () => {
                                 <AiOutlineShoppingCart />
                             </li>
                             <li className="hover:text-white cursor-pointer">
-                                <BiUserCircle />
+                                <Link to='/login'>
+                                    <BiUserCircle />
+                                </Link>
                             </li>
                         </ul>
                     </div>

@@ -21,4 +21,8 @@ body {
   .btn {
     @apply bg-green-500 hover:bg-green-600 font-medium text-center text-sm text-white py-2 px-3 rounded-lg
   }
+
+  .form-input {
+    @apply border focus:border-green-500 border-gray-400 rounded-md py-2 px-4 my-2 w-full outline-none
+  }
 }
