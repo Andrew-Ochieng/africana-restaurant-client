@@ -52,6 +52,10 @@ export const CartProvider = ({ children }) => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0); // calculate the total price of the items in the cart
     };
 
+    useEffect(() => {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems]);
+
     // get cart items from browser
     useEffect(() => {
       const cartItems = localStorage.getItem("cartItems");
@@ -72,9 +76,7 @@ export const CartProvider = ({ children }) => {
     >
       {children}
     </CartContext.Provider>
-
   )
-
       
 }
 

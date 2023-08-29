@@ -77,7 +77,7 @@ const Cart = () => {
                         <h1 className="text-lg font-bold text-red-500">Your cart is empty</h1>
                     )
                 }
-                <div className="flex gap-4">
+                <div className="md:flex gap-4">
                     <Link 
                         to='/menus'
                         className="btn"

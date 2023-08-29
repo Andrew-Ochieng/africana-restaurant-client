@@ -1,25 +1,29 @@
+import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
+import { CartContext } from "../../Context/cart";
 
 const MenuItem = ({menus, loading, error}) => {
+    const { addToCart } = useContext(CartContext)
+
     const { id } = useParams()
-    let paramsId = Number(id)
+    // let paramsId = Number(id)
     let menu = {}
     if (menu) {
-        const arr = menus.filter((menu) => menu.id == paramsId)
+        const arr = menus.filter((item) => item.id == id)
         menu = arr[0]
     } else {
         menu = {}
     }
 
-
-    const { navigate } = useNavigate()
-    const handleAddToCart = () => {
-        alert('Item successfully added to cart')
-        setTimeout(() => {
-            navigate("/menus")
-        }, 2000);
-    }
+    // const { navigate } = useNavigate()
+    // navigate("/menus")
+    // const handleAddToCart = () => {
+    //     alert('Item successfully added to cart')
+    //     setTimeout(() => {
+    //         navigate("/menus")
+    //     }, 2000);
+    // }
 
     return ( 
         <>
@@ -44,7 +48,7 @@ const MenuItem = ({menus, loading, error}) => {
                             <h4 className="text-green-500 font-medium mb-4">Ksh {menu.price}</h4>
                             <button 
                                 className="btn bg-green-500"
-                                onClick={handleAddToCart}
+                                onClick={() => addToCart(menu)}
                                 >
                                 Add To Cart
                             </button>

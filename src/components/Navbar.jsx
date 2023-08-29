@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {  FaRegTimesCircle } from "react-icons/fa"
-import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai"
+import { AiOutlineHeart } from "react-icons/ai"
+import { MdOutlineShoppingCart } from "react-icons/md"
 import { BiUserCircle } from "react-icons/bi"
 import { HiMenuAlt2 } from "react-icons/hi"
 import { Link } from "react-router-dom";
 import logo from "../assets/dish.png"
+import { CartContext } from "../Context/cart";
 
 const Navbar = () => {
+    const { cartItems } = useContext(CartContext)
+
     const [open, setOpen] = useState(false)
 
     const menus = [
@@ -31,8 +35,11 @@ const Navbar = () => {
                         <div className="flex gap-2">
                             <div>
                                 <ul className="md:hidden flex text-gray-800 text-2xl gap-3">
-                                    <li className="hover:text-white cursor-pointer">
-                                        <AiOutlineShoppingCart />
+                                    <li className="flex hover:text-white cursor-pointer">
+                                        <MdOutlineShoppingCart />
+                                        <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
+                                            <small>{cartItems.length}</small>
+                                        </p>
                                     </li>
                                     <li className="hover:text-white cursor-pointer">
                                         <Link to='/login'>
@@ -41,7 +48,7 @@ const Navbar = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <button onClick={() => setOpen((prev) => !prev)} className="md:hidden text-2xl text-gray-200">
+                            <button disabled onClick={() => setOpen((prev) => !prev)} className="md:hidden text-2xl text-gray-200">
                                 {open ? <FaRegTimesCircle/> : <HiMenuAlt2/>}
                             </button>
                         </div>
@@ -68,8 +75,13 @@ const Navbar = () => {
                             <li className="hover:text-white cursor-pointer">
                                 <AiOutlineHeart />
                             </li>
-                            <li className="hover:text-white cursor-pointer">
-                                <AiOutlineShoppingCart />
+                            <li>
+                                <Link to='/cart' className="flex hover:text-white cursor-pointer">
+                                    <MdOutlineShoppingCart />
+                                    <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
+                                        <small>{cartItems.length}</small>
+                                    </p>
+                                </Link>
                             </li>
                             <li className="hover:text-white cursor-pointer">
                                 <Link to='/login'>

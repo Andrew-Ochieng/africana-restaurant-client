@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { CartContext } from "../../Context/cart";
 
 const MenuList = ({filteredMenus, loading, error}) => {
-    const { cartItems, addToCart } = useContext(CartContext)
+    const { addToCart } = useContext(CartContext)
 
 
 
