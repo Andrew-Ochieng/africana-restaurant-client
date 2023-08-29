@@ -9,9 +9,9 @@ const Cart = () => {
 
     return ( 
         <>
-            <div className="flex-col flex bg-white gap-8 p-10 text-black text-sm">
-                <h1 className="text-2xl font-bold">Cart</h1>
-                <div className="flex justify-between items-center" >
+            <div className="flex-col flex justify-center items-center bg-white gap-8 p-10 text-black text-sm">
+                <h1 className="text-2xl font-bold text-center">Cart</h1>
+                <div className="flex justify-center items-center" >
                     <div className="overflow-x-auto">
                         <table className="table border">
                             <thead>
@@ -64,8 +64,8 @@ const Cart = () => {
                 </div>
                 {
                     cartItems.length > 0 ? (
-                    <div>
-                        <h1 className="text-lg font-bold">Total: ${getCartTotal()}</h1>
+                    <div className="flex md:gap-8 gap-4 items-center">
+                        <h1 className="text-lg font-bold">Total: Ksh {getCartTotal()}</h1>
                         <button
                         className="mt-2 px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
                         onClick={() => {clearCart()}}

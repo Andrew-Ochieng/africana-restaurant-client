@@ -7,7 +7,6 @@ const MenuList = ({filteredMenus, loading, error}) => {
     const { addToCart } = useContext(CartContext)
 
 
-
     return ( 
         <>
             <div className="md:m-8 m-4">

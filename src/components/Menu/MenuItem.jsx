@@ -7,23 +7,16 @@ const MenuItem = ({menus, loading, error}) => {
     const { addToCart } = useContext(CartContext)
 
     const { id } = useParams()
-    // let paramsId = Number(id)
+    let paramsId = Number(id)
     let menu = {}
     if (menu) {
-        const arr = menus.filter((item) => item.id == id)
+        const arr = menus.filter((item) => item.id == paramsId)
         menu = arr[0]
     } else {
         menu = {}
     }
 
-    // const { navigate } = useNavigate()
-    // navigate("/menus")
-    // const handleAddToCart = () => {
-    //     alert('Item successfully added to cart')
-    //     setTimeout(() => {
-    //         navigate("/menus")
-    //     }, 2000);
-    // }
+
 
     return ( 
         <>

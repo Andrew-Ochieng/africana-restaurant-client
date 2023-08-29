@@ -36,10 +36,12 @@ const Navbar = () => {
                             <div>
                                 <ul className="md:hidden flex text-gray-800 text-2xl gap-3">
                                     <li className="flex hover:text-white cursor-pointer">
-                                        <MdOutlineShoppingCart />
-                                        <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
-                                            <small>{cartItems.length}</small>
-                                        </p>
+                                        <Link to='/cart' className="flex hover:text-white cursor-pointer">
+                                            <MdOutlineShoppingCart />
+                                            <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
+                                                <small>{cartItems.length}</small>
+                                            </p>
+                                        </Link>
                                     </li>
                                     <li className="hover:text-white cursor-pointer">
                                         <Link to='/login'>
@@ -48,7 +50,7 @@ const Navbar = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <button disabled onClick={() => setOpen((prev) => !prev)} className="md:hidden text-2xl text-gray-200">
+                            <button onClick={() => setOpen((prev) => !prev)} className="md:hidden text-2xl text-gray-200">
                                 {open ? <FaRegTimesCircle/> : <HiMenuAlt2/>}
                             </button>
                         </div>
@@ -92,7 +94,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className={`${open ? "left-0 " : "left-[-100%]"} sm:hidden absolute top-0 right-0 bottom-0  space-y-8 py-6 px-8 w-[85%] h-screen duration-300 ease-in-out bg-yellow-500`}>
+                <div className={`${open ? "left-0 " : "left-[-100%]"} sm:hidden absolute top-0 right-0 bottom-0  space-y-8 py-6 px-8 w-[85%] h-screen duration-500 ease-in-out bg-yellow-500`}>
                     <ul className="flex flex-col justify-center mt-8 text-base font-medium">
                         <li 
                             className='md:mx-3 md:my-0 my-4' 
@@ -104,7 +106,10 @@ const Navbar = () => {
                         </li>
                         {menus.map((item, index) => (
                             <div key={index}>
-                                <li className='md:mx-3 md:my-0 my-4 '>
+                                <li 
+                                    onClick={() => setOpen((prev) => !prev)}
+                                    className='md:mx-3 md:my-0 my-4 '
+                                >
                                     <Link to={item.route}>
                                         {item.name}
                                     </Link>

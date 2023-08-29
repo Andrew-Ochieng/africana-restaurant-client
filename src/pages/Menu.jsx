@@ -11,6 +11,7 @@ const Menu = ({menus, loading, error}) => {
     
     const filteredMenus = menus.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
 
+    
     return ( 
         <>
             <div className="hero md:h-64 h-32" style={{backgroundImage: `url(${aboutBanner})`}}>
@@ -43,7 +44,7 @@ const Menu = ({menus, loading, error}) => {
             </div>
 
             <MenuList filteredMenus={filteredMenus} loading={loading} error={error} />
-            
+  
         </>
      );
 }
