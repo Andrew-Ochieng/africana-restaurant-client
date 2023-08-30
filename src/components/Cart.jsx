@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { CartContext } from "../Context/cart";
+import { CartContext } from "../context/cart";
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({session}) => {
     const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
 
 
@@ -85,7 +85,7 @@ const Cart = () => {
                         Continue Shopping
                     </Link>
                     <Link 
-                        to='/checkout'
+                        to={`${session ? '/checkout' : '/login'}`}
                         className="btn"
                         >
                         Proceed to Checkout

@@ -13,11 +13,13 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import Cart from './components/Cart';
+import Checkout from './components/Menu/Checkout';
 
 function App() {
   const [menus, setMenus] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [session, setSession] = useState(null)
 
   useEffect(() => {
     const getMenuItems = async () => {
@@ -38,20 +40,39 @@ function App() {
   }, [])
 
 
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
+  // console.log(user)
+
   return (
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar />
+        <Navbar session={session} />
         <Routes>
-          <Route path='/cart' element={ <Cart  /> } />
+          <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
+          <Route path='/cart' element={ <Cart session={session} /> } />
           <Route path="/login" element={ <Login /> } />
           <Route path="/signup" element={ <SignUp /> } />
           <Route path="/about" element={ <About /> } />
           <Route path="/menus" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
-          <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
+          {/* {session ? (
+            <Route path='/checkout' element={ <Checkout /> } />
+          ) : (
+            <Route path="/login" element={ <Login /> } />
+          )} */}
+          <Route path='/checkout' element={ <Checkout /> } />
+
 
           <Route path='/admin/add-menu' element={ <AddMenus /> } />
         </Routes>

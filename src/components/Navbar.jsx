@@ -6,9 +6,9 @@ import { BiUserCircle } from "react-icons/bi"
 import { HiMenuAlt2 } from "react-icons/hi"
 import { Link } from "react-router-dom";
 import logo from "../assets/dish.png"
-import { CartContext } from "../Context/cart";
+import { CartContext } from "../context/cart";
 
-const Navbar = () => {
+const Navbar = ({session}) => {
     const { cartItems } = useContext(CartContext)
 
     const [open, setOpen] = useState(false)
@@ -69,6 +69,13 @@ const Navbar = () => {
                                     </li>
                                 </div>
                             ))}
+                            {session ? (
+                                <li className="md:mx-3 md:my-0 my-4 hover:text-white">
+                                    <Link to='/'>
+                                        Logout
+                                    </Link>
+                                </li>
+                            ) : <li></li>}
                         </ul>
                     </div>
 

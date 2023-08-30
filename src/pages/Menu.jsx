@@ -11,6 +11,13 @@ const Menu = ({menus, loading, error}) => {
     
     const filteredMenus = menus.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
 
+    // const filteredMenus = () => {
+    //     if (search === '') {
+    //         return menus
+    //     } else {
+    //         return menus.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+    //     }
+    // }
     
     return ( 
         <>

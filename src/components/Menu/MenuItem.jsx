@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
-import { CartContext } from "../../Context/cart";
+import { CartContext } from "../../context/cart";
 
 const MenuItem = ({menus, loading, error}) => {
     const { addToCart } = useContext(CartContext)
