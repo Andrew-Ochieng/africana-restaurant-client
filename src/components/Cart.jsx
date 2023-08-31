@@ -3,7 +3,7 @@ import { CartContext } from "../context/cart";
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { Link } from "react-router-dom";
 
-const Cart = ({session}) => {
+const Cart = () => {
     const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
 
 
@@ -85,7 +85,7 @@ const Cart = ({session}) => {
                         Continue Shopping
                     </Link>
                     <Link 
-                        to={`${session ? '/checkout' : '/login'}`}
+                        to='/checkout'
                         className="btn"
                         >
                         Proceed to Checkout

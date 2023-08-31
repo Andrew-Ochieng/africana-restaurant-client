@@ -17,7 +17,7 @@ const LogIn = () => {
             password: password,
         })
 
-        console.log(data)
+        // console.log(data)
 
         if (email && password) {
             if(data) {
@@ -25,7 +25,7 @@ const LogIn = () => {
                 setLoading(true)
                 setTimeout(() => {
                     navigate('/menus')
-                }, 3000);
+                }, 2000);
             }
         } 
 
@@ -43,7 +43,7 @@ const LogIn = () => {
         <>
             <ToastContainer 
                 position = 'top-center'
-                autoClose = {2000}
+                autoClose = {3000}
                 hideProgressBar = {true}
                 closeOnClick = {true}
                 pauseOnHover = {true}
@@ -51,7 +51,7 @@ const LogIn = () => {
                 progress = {undefined}
                 theme= 'colored'
             />
-            <div className="md:flex justify-center items-center md:mt-16 mt-12 mx-8">
+            <div className="md:flex justify-center items-center md:my-16 my-12 mx-8">
                 <div className="md:w-1/3 lg:mr-16 md:mr-8">
                     <img src={imgUrl} alt="" />
                 </div>
@@ -80,12 +80,14 @@ const LogIn = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <button type="submit" className="my-2 py-2 px-4 rounded-md uppercase font-light bg-green-500 w-full">
-                            {loading ? <p>Loading...</p> : <p>Login</p>}
+                        <button 
+                            type="submit" 
+                            className="my-2 py-2 px-4 rounded-md uppercase font-light bg-green-500 w-full">
+                            {loading ? "Loading..." : "Login"}
                         </button>
                     </form>
                     <div>
-                        <h3>
+                        <h3 className="md:text-base text-sm">
                             Don't have an account? 
                             <Link to="/signup" className="text-red-500 font-medium mx-2">
                                 Sign Up

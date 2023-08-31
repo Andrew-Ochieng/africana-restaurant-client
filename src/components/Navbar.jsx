@@ -4,24 +4,56 @@ import { AiOutlineHeart } from "react-icons/ai"
 import { MdOutlineShoppingCart } from "react-icons/md"
 import { BiUserCircle } from "react-icons/bi"
 import { HiMenuAlt2 } from "react-icons/hi"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/dish.png"
 import { CartContext } from "../context/cart";
+import { supabase } from "../supabase/supabaseConfig";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = ({session}) => {
     const { cartItems } = useContext(CartContext)
+    const navigate = useNavigate()
 
     const [open, setOpen] = useState(false)
 
     const menus = [
         {name: "Menu", route: "/menus"},
-        {name: "Cart", route: "/cart"},
         {name: "About", route: "/about"},
         {name: "Contact", route: "/contact"},
     ]
 
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        
+        toast.error('Logout was succesful')
+        setOpen((prev) => !prev)
+
+        setTimeout(() => {
+            navigate('/')
+        }, 2000);
+    }
+
+    const handleCartNavigate = () => {
+        if (session) {
+            navigate('/cart')
+        } else {
+            navigate('/login')
+        }
+    }
+
     return ( 
         <>
+            <ToastContainer 
+                position = 'top-center'
+                autoClose = {2000}
+                hideProgressBar = {true}
+                closeOnClick = {true}
+                pauseOnHover = {true}
+                draggable = {true}
+                progress = {undefined}
+                theme= 'colored'
+            />
             <nav className='md:px-32 px-4  py-2 top-0 left-0 sticky z-[100] bg-yellow-500 opacity-95 shadow-xl'>
                 <div className='md:flex items-center justify-between'>
                     <div className="flex justify-between items-center">
@@ -35,13 +67,13 @@ const Navbar = ({session}) => {
                         <div className="flex gap-2">
                             <div>
                                 <ul className="md:hidden flex text-gray-800 text-2xl gap-3">
-                                    <li className="flex hover:text-white cursor-pointer">
-                                        <Link to='/cart' className="flex hover:text-white cursor-pointer">
-                                            <MdOutlineShoppingCart />
-                                            <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
-                                                <small>{cartItems.length}</small>
-                                            </p>
-                                        </Link>
+                                    <li 
+                                        onClick={handleCartNavigate}
+                                        className="flex hover:text-white cursor-pointer">
+                                        <MdOutlineShoppingCart />
+                                        <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
+                                            <small>{session ? cartItems.length : '0'}</small>
+                                        </p>
                                     </li>
                                     <li className="hover:text-white cursor-pointer">
                                         <Link to='/login'>
@@ -70,10 +102,11 @@ const Navbar = ({session}) => {
                                 </div>
                             ))}
                             {session ? (
-                                <li className="md:mx-3 md:my-0 my-4 hover:text-white">
-                                    <Link to='/'>
-                                        Logout
-                                    </Link>
+                                <li 
+                                    onClick={handleLogout}
+                                    className="md:mx-3 md:my-0 my-4 text-white hover:text-red-500 cursor-pointer"
+                                    >
+                                    Logout
                                 </li>
                             ) : <li></li>}
                         </ul>
@@ -84,13 +117,13 @@ const Navbar = ({session}) => {
                             <li className="hover:text-white cursor-pointer">
                                 <AiOutlineHeart />
                             </li>
-                            <li>
-                                <Link to='/cart' className="flex hover:text-white cursor-pointer">
-                                    <MdOutlineShoppingCart />
-                                    <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
-                                        <small>{cartItems.length}</small>
-                                    </p>
-                                </Link>
+                            <li 
+                                onClick={handleCartNavigate}
+                                className="flex hover:text-white cursor-pointer">
+                                <MdOutlineShoppingCart />
+                                <p className="text-xs bg-green-500 text-white font-medium rounded-full w-4 h-4 flex items-center justify-center -ml-1 -mt-1">
+                                    <small>{session ? cartItems.length : '0'}</small>
+                                </p>
                             </li>
                             <li className="hover:text-white cursor-pointer">
                                 <Link to='/login'>
@@ -123,6 +156,14 @@ const Navbar = ({session}) => {
                                 </li>
                             </div>
                         ))}
+                        {session ? (
+                            <li 
+                                onClick={handleLogout}
+                                className="md:mx-3 md:my-0 my-4 text-white hover:text-red-500 cursor-pointer"
+                                >
+                                Logout
+                            </li>
+                        ) : <li></li>}
                     </ul>
                 </div>
             </nav>

@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "../supabase/supabaseConfig";
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -17,14 +19,22 @@ const SignUp = () => {
             }
         })
 
-        if(data) {
-            console.log('You successfully created new account')
-            navigate('/login')
+        if (email && password) {
+            if(data) {
+                toast.success('You successfully created new account')
+                navigate('/login')
+            }
+
+            if (error) {
+                toast.error('New user not created!')
+            }
+        } else {
+            toast.error('Fill in all the inputs!')
         }
 
-        if (error) {
-            console.log('New user not created!')
-        }
+
+
+        
 
         
     }
@@ -33,7 +43,17 @@ const SignUp = () => {
 
     return ( 
         <>
-            <div className="md:flex justify-center items-center md:mt-16 mt-12 mx-8">
+            <ToastContainer 
+                position = 'top-center'
+                autoClose = {2000}
+                hideProgressBar = {true}
+                closeOnClick = {true}
+                pauseOnHover = {true}
+                draggable = {true}
+                progress = {undefined}
+                theme= 'colored'
+            />
+            <div className="md:flex justify-center items-center md:my-16 my-12 mx-8">
                 <div className="md:w-1/2 md:mr-8">
                     <img className="" src={imgUrl} alt="" />
                 </div>
@@ -72,7 +92,7 @@ const SignUp = () => {
                             Sign Up
                         </button>
                     </form>
-                    <div>
+                    <div className="md:text-base text-sm">
                         <h3>
                             Have an account already? 
                             <Link to="/login" className="text-red-500 font-medium mx-2">

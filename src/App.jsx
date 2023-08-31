@@ -59,18 +59,14 @@ function App() {
         <Navbar session={session} />
         <Routes>
           <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
-          <Route path='/cart' element={ <Cart session={session} /> } />
+          <Route path='/cart' element={ <Cart /> } />
           <Route path="/login" element={ <Login /> } />
           <Route path="/signup" element={ <SignUp /> } />
           <Route path="/about" element={ <About /> } />
           <Route path="/menus" element={ <Menu menus={menus} loading={loading} error={error} /> } />
           <Route path="/contact" element={ <Contact /> } />
           <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
-          {/* {session ? (
-            <Route path='/checkout' element={ <Checkout /> } />
-          ) : (
-            <Route path="/login" element={ <Login /> } />
-          )} */}
+
           <Route path='/checkout' element={ <Checkout /> } />
 
 
