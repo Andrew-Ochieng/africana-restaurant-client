@@ -1,22 +1,19 @@
 import HeroImage from "../../assets/hero.png"
-import { BiSearch } from "react-icons/bi"
 
 const Hero = () => {
     return ( 
         <>
-            <div className="bg-gray-100">
-                <div className="md:flex md:justify-around items-center mx-8 md:py-32 py-12">
+            <div className="bg-gray-100 md:px-32">
+                <div className="grid md:grid-cols-2 mx-6 md:py-32 py-12">
                     <div>
-                        <h1 className="md:text-5xl text-3xl font-semibold text-gray-700 md:text-left text-center">The Home Of African Delicacies</h1>
-                        <p className="my-4 md:text-left text-center">You make an order, we deliver it right at your doorstep!</p>
+                        <p className="font-medium md:text-xl">Easy way to make an order</p>
+                        <h1 className="mt-4 md:mb-8 mb-4 md:text-6xl text-4xl font-bold text-gray-700 ">The Home Of African Dishes</h1>
+                        <p className="font-light ">You make an order, we deliver it right at your doorstep!</p>
                         <div>
-                            <input type="search" name="search" className="py-3 px-4 rounded-l-md shadow-md"/>
-                            <button className="py-4 px-4 rounded-r-md shadow-md bg-green-500">
-                                <BiSearch />
-                            </button>
+                            
                         </div>
                     </div>
-                    <div className="md:w-1/3 w-full">
+                    <div className="w-full">
                         <img src={HeroImage} alt="" />
                     </div>
                 </div>

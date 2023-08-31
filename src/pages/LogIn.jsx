@@ -3,6 +3,7 @@ import { useState } from "react";
 import { supabase } from "../supabase/supabaseConfig";
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import { FcGoogle } from "react-icons/fc"
 
 const LogIn = () => {
     const [loading, setLoading] = useState(false)
@@ -10,14 +11,34 @@ const LogIn = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
+    const handleGoogleLogin = async (response) => {
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+              queryParams: {
+                access_type: 'offline',
+                prompt: 'consent',
+              },
+            },
+            token: response.credential,
+            nonce: 'NONCE', // must be the same one as provided in data-nonce (if any)
+        })
+
+        if(data) {
+            console.log(data)
+        }
+
+        if (error) {
+            console.log(error)
+        }
+    }
+
     const handleLogin = async (e) => {
         e.preventDefault()
         const { data, error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password,
         })
-
-        // console.log(data)
 
         if (email && password) {
             if(data) {
@@ -61,8 +82,19 @@ const LogIn = () => {
                         <h1 className="md:text-2xl text-xl my-4 font-semibold text-gray-800">
                             Login
                         </h1>
+                        <div className="md:mb-4">
+                            <button 
+                                onClick={handleGoogleLogin}
+                                className="flex items-center justify-center gap-4 rounded-md border py-2 px-3 w-full">
+                                <FcGoogle className="text-xl"/>
+                                Login with Google
+                            </button>
+                        </div>
+
+                        <hr className="my-8"/>
+
                         <div>   
-                            <label htmlFor="email">email</label><br />
+                            <label htmlFor="email">Email Address</label><br />
                             <input
                                 type="email"
                                 className="form-input"
@@ -72,7 +104,7 @@ const LogIn = () => {
                             />
                         </div>
                         <div>
-                            <label htmlFor="password">Password</label><br />
+                            <label htmlFor="password">Your Password</label><br />
                             <input
                                 type="password"
                                 className="form-input"
