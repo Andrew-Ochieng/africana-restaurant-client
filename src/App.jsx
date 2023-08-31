@@ -59,7 +59,7 @@ function App() {
         <Navbar session={session} />
         <Routes>
           <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
-          <Route path='/cart' element={ <Cart /> } />
+          <Route path='/cart' element={ <Cart session={session} /> } />
           <Route path="/login" element={ <Login /> } />
           <Route path="/signup" element={ <SignUp /> } />
           <Route path="/about" element={ <About /> } />

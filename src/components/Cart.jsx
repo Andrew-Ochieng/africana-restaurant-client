@@ -3,7 +3,7 @@ import { CartContext } from "../context/cart";
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({session}) => {
     const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
 
 

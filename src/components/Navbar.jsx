@@ -60,7 +60,8 @@ const Navbar = ({session}) => {
                         <Link to='/' className='md:text-lg text-sm font-medium '>
                             <div className="flex flex-col items-center">
                                 <img className="md:w-12 w-8" src={logo} alt="" />
-                                Kienyeji Foods
+                                
+                                Afrikaan Eatery
                             </div>
                         </Link>
 
