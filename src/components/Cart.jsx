@@ -80,13 +80,13 @@ const Cart = ({session}) => {
                 <div className="md:flex gap-4">
                     <Link 
                         to='/menus'
-                        className="btn"
+                        className="btns"
                         >
                         Continue Shopping
                     </Link>
                     <Link 
                         to='/checkout'
-                        className="btn"
+                        className="btns"
                         >
                         Proceed to Checkout
                     </Link>

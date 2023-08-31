@@ -76,7 +76,7 @@ const ShippingForm = () => {
                 </div>
                 <button 
                     type="submit" 
-                    className="my-2 py-2 px-4 rounded-md font-medium bg-green-500 text-white"
+                    className="my-2 py-2 px-4 btns"
                     >
                     Payment
                 </button>

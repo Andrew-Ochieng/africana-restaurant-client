@@ -18,8 +18,8 @@ body {
 }
 
 @layer components {
-  .btn {
-    @apply bg-green-500 hover:bg-green-600 font-medium text-center text-sm text-white py-2 px-3 rounded-lg
+  .btns {
+    @apply bg-green-500 hover:bg-green-600 font-medium text-center text-sm text-white py-2 px-3 rounded-md
   }
 
   .form-input {
