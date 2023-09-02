@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import  { SkeletonTheme } from 'react-loading-skeleton';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Home from './pages/Home';
@@ -31,7 +32,7 @@ function App() {
 
       if (error) {
         setLoading(false)
-        setError(true)
+        setError(error.message)
         console.log(error)
       }
     }
@@ -54,26 +55,28 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <ScrollToTop />
-        <Navbar session={session} />
-        <Routes>
-          <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
-          <Route path='/cart' element={ <Cart session={session} /> } />
-          <Route path="/login" element={ <Login /> } />
-          <Route path="/signup" element={ <SignUp /> } />
-          <Route path="/about" element={ <About /> } />
-          <Route path="/menus" element={ <Menu menus={menus} loading={loading} error={error} /> } />
-          <Route path="/contact" element={ <Contact /> } />
-          <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
+      <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+        <BrowserRouter>
+          <ScrollToTop />
+          <Navbar session={session} />
+          <Routes>
+            <Route path="/" element={ <Home menus={menus} loading={loading} error={error}  /> } />
+            <Route path='/cart' element={ <Cart session={session} /> } />
+            <Route path="/login" element={ <Login /> } />
+            <Route path="/signup" element={ <SignUp /> } />
+            <Route path="/about" element={ <About /> } />
+            <Route path="/menus" element={ <Menu menus={menus} loading={loading} error={error} /> } />
+            <Route path="/contact" element={ <Contact /> } />
+            <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
 
-          <Route path='/checkout' element={ <Checkout /> } />
+            <Route path='/checkout' element={ <Checkout /> } />
 
 
-          <Route path='/admin/add-menu' element={ <AddMenus /> } />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+            <Route path='/admin/add-menu' element={ <AddMenus /> } />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </SkeletonTheme>
     </div>
   );
 }

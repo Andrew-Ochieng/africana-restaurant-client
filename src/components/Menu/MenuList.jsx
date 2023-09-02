@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { FadeLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 import { useContext } from 'react'
 import { CartContext } from "../../context/cart";
+
 
 const MenuList = ({filteredMenus, loading, error}) => {
     const { addToCart } = useContext(CartContext)
@@ -11,8 +12,8 @@ const MenuList = ({filteredMenus, loading, error}) => {
         <>
             <div className="md:m-8 m-4">
                 {loading ? (
-                    <div className="pt-4 pr-4">
-                        <FadeLoader 
+                    <div className="flex items-center justify-center md:my-64 my-16">
+                        <HashLoader 
                             color="#36d7b7" 
                             loading={loading}
                             size={50}
@@ -30,7 +31,7 @@ const MenuList = ({filteredMenus, loading, error}) => {
                                     <h3 className="text-gray-700 md:text-xl text-lg font-semibold mt-3">{menuItem.name}</h3>
                                 </Link>
                                 <div className="flex justify-between items-center">
-                                    <h4 className="text-green-400 font-light ">Ksh {menuItem.price}</h4>
+                                    <h4 className="text-green-400 font-light ">Ksh {menuItem.price }</h4>
                                     <button 
                                         onClick={() => addToCart(menuItem)}
                                         className="py-1 px-2 rounded-md text-sm bg-green-500 text-white font-semibold"

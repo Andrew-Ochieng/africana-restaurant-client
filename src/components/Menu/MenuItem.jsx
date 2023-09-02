@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { FadeLoader } from "react-spinners";
+import { useParams } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 import { CartContext } from "../../context/cart";
 
 const MenuItem = ({menus, loading, error}) => {
@@ -12,24 +12,26 @@ const MenuItem = ({menus, loading, error}) => {
     if (menu) {
         const arr = menus.filter((item) => item.id == paramsId)
         menu = arr[0]
+        console.log(arr[0])
     } else {
         menu = {}
     }
 
 
-
     return ( 
         <>
             { error && <h4 className="text-red-500">{ error }</h4>}
-            <div className="md:m-8 m-4">
+            <div className="md:m-16 m-6">
                 {loading ? (
-                    <FadeLoader 
-                        color="#36d7b7" 
-                        loading={loading}
-                        size={50}
-                        aria-label="Loading Content..."
-                        data-testid="loader"
-                    />
+                    <div className="flex items-center justify-center md:my-64 my-16">
+                        <HashLoader 
+                            color="#36d7b7" 
+                            loading={loading}
+                            size={50}
+                            aria-label="Loading Content..."
+                            data-testid="loader"
+                        />
+                    </div>
                 ) : (
                     <div key={menu.id} className='grid md:grid-cols-2  gap-4 '>
                         <div className="w-full">
