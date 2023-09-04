@@ -18,18 +18,18 @@ const Checkout = () => {
 
                 <div className="md:basis-1/3 ">
                     <div className="bg-green-200 p-4 rounded-lg space-y-2 font-semibold text-gray-700">
+                        <h3>Cart Summary</h3>
                         <div className="flex item-center justify-between">
-                            <p>Subtotal:</p> 
-                            <p>Ksh {getCartTotal() + 200}</p>
+                            Subtotal: 
+                            <span>Ksh {getCartTotal()}</span>
                         </div>
                         <div className="flex item-center justify-between">
-                            Shipping: 
+                            Shipping Fee: 
                             <span>Ksh {shippingFee}</span>
                         </div>
-                        <hr />
-                        <div className="flex item-center justify-between text-gray-800 font-bold">
-                            Total:
-                            <p>{getCartTotal() + shippingFee}</p>
+                        <div className="flex item-center justify-between">
+                            Total Amount: 
+                            <span>Ksh {getCartTotal() + shippingFee}</span>
                         </div>
                     </div>
                 </div>

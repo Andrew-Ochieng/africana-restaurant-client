@@ -6,7 +6,9 @@ import CartItems from "./Menu/CartItems";
 const Cart = () => {
     const { cartItems, clearCart, getCartTotal } = useContext(CartContext)
 
-
+    // const let totalItems = new Map().set('a', 1).set('b', 2);
+    // const  result = Array.from(myMap).map(([name, value]) => ({name, value}))
+    const shippingFee = 200
     return ( 
         <>
             <div className="p-10 ">
@@ -16,19 +18,27 @@ const Cart = () => {
                         <CartItems />
                     </div>
 
-                    <div className="md:basis-1/3 basis-0 md:mt-0 mt-12 border p-4 rounded">
-                        <h3>Order Summary</h3>
-                        <div>
-                            <p>Total Quantity: {cartItems.reduce((item) => (
-                                <p>{item.quantity}</p>
-                            ))}</p>
-                            <p>Subtotal:</p>
+                    <div className="md:basis-1/3 ">
+                        <div className="bg-green-200 p-4 rounded-lg space-y-2 font-semibold text-gray-700">
+                            <h3>Cart Summary</h3>
+                            <div className="flex item-center justify-between">
+                                Subtotal: 
+                                <span>Ksh {getCartTotal()}</span>
+                            </div>
+                            <div className="flex item-center justify-between">
+                                Shipping Fee: 
+                                <span>Ksh {shippingFee}</span>
+                            </div>
+                            <div className="flex item-center justify-between">
+                                Total Amount: 
+                                <span>Ksh {getCartTotal() + shippingFee}</span>
+                            </div>
+                            <p>
+                                <Link to='/checkout' className="btns">
+                                    Proceed to Checkout
+                                </Link>
+                            </p>
                         </div>
-                        <p>
-                            <Link to='/checkout' className="btns">
-                                Proceed to Checkout
-                            </Link>
-                        </p>
                     </div>
                 </div>
                 

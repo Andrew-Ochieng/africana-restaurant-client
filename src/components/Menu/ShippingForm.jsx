@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 const ShippingForm = () => {
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
+    const [locationAddress, setLocationAddress] = useState('')
     const [phone, setPhone] = useState('')
     const [county, setCounty] = useState('')
     const [ward, setWard] = useState('')
@@ -17,25 +16,36 @@ const ShippingForm = () => {
         <>
             <form onSubmit={handleCheckout}>
                 <h1 className="md:text-2xl text-xl md:mb-8 font-semibold text-gray-700">
-                    Customer Address:
+                    Address & Payment:
                 </h1>
-                <div>   
-                    <label htmlFor="username">Username</label><br />
-                    <input
-                        type="username"
-                        className="form-input"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+                <div className="md:flex justify-between gap-4">
+                    <div>   
+                        <label htmlFor="county">County</label><br />
+                        <input
+                            type="county"
+                            className="form-input"
+                            value={county}
+                            onChange={(e) => setCounty(e.target.value)}
+                        />
+                    </div>  
+                    <div>   
+                        <label htmlFor="ward">Ward</label><br />
+                        <input
+                            type="ward"
+                            className="form-input"
+                            value={ward}
+                            onChange={(e) => setWard(e.target.value)}
+                        />
+                    </div>
                 </div>
                 <div className="md:flex justify-between gap-4">
                     <div>   
-                        <label htmlFor="email">Email</label><br />
+                        <label htmlFor="location">Location Address</label><br />
                         <input
-                            type="email"
+                            type="ward"
                             className="form-input"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={locationAddress}
+                            onChange={(e) => setLocationAddress(e.target.value)}
                         />
                     </div>
                     <div>
@@ -48,31 +58,11 @@ const ShippingForm = () => {
                         />
                     </div>
                 </div>
-                <div className="md:flex justify-between gap-4">
-                    <div>   
-                        <label htmlFor="county">County</label><br />
-                        <input
-                            type="county"
-                            className="form-input"
-                            value={county}
-                            onChange={(e) => setCounty(e.target.value)}
-                        />
-                    </div>
-                    <div>   
-                        <label htmlFor="ward">Ward</label><br />
-                        <input
-                            type="ward"
-                            className="form-input"
-                            value={ward}
-                            onChange={(e) => setWard(e.target.value)}
-                        />
-                    </div>
-                </div>
                 <button 
                     type="submit" 
                     className="my-2 py-2 px-4 btns"
                     >
-                    Payment
+                    Confirm Payment
                 </button>
             </form>
         </>
