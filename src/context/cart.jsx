@@ -4,9 +4,10 @@ export const CartContext = createContext()
 
 
 export const CartProvider = ({ children }) => {
+  // const getCartItems = localStorage.parse('cartItems')
     const [cartItems, setCartItems] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [])
-
-    // add item to cart
+ 
+    
     const addToCart = (item) => {
         const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id); // check if the item is already in the cart
       
@@ -19,12 +20,11 @@ export const CartProvider = ({ children }) => {
             )
         );
         } else {
-        setCartItems([...cartItems, { ...item, quantity: 1 }]); // if the item is not in the cart, add the item to the cart
+          setCartItems([...cartItems, { ...item, quantity: 1 }]); // if the item is not in the cart, add the item to the cart
         }
     };
 
 
-    // remove item to cart
     const removeFromCart = (item) => {
         const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
       

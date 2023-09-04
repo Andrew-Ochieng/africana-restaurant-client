@@ -20,8 +20,8 @@ const MenuItem = ({menus, loading, error}) => {
 
     return ( 
         <>
-            { error && <h4 className="text-red-500">{ error }</h4>}
             <div className="md:m-16 m-6">
+                { error && <h4 className="text-red-500">{ error }</h4>}
                 {loading ? (
                     <div className="flex items-center justify-center md:my-64 my-16">
                         <HashLoader 

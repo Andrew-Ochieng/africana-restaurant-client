@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import Cart from './components/Cart';
 import Checkout from './components/Menu/Checkout';
+import { CartProvider } from './context/cart';
 
 function App() {
   const [menus, setMenus] = useState([])
@@ -24,7 +25,10 @@ function App() {
 
   useEffect(() => {
     const getMenuItems = async () => {
-      const { data, error } = await supabase.from("menus").select()
+      const { data, error } = await supabase
+        .from("menus")
+        .select()
+        .order('id', {ascending: false})
       if (data) {
         setMenus(data)
         setLoading(false)
@@ -51,7 +55,7 @@ function App() {
     })
   }, [])
 
-  // console.log(user)
+  // console.log(session)
 
   return (
     <div className="App">
@@ -70,7 +74,6 @@ function App() {
             <Route path="/menu_item/:id" element={ <MenuItem menus={menus} loading={loading} error={error} /> } />
 
             <Route path='/checkout' element={ <Checkout /> } />
-
 
             <Route path='/admin/add-menu' element={ <AddMenus /> } />
           </Routes>

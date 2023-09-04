@@ -54,7 +54,7 @@ const Navbar = ({session}) => {
                 progress = {undefined}
                 theme= 'colored'
             />
-            <nav className='md:px-32 px-4  py-2 top-0 left-0 sticky z-[100] bg-yellow-500 opacity-95 shadow-xl'>
+            <nav className='xl:px-32 sm:px-16 px-4  py-2 top-0 left-0 sticky z-[100] bg-yellow-500 opacity-95 shadow-xl'>
                 <div className='md:flex items-center justify-between'>
                     <div className="flex justify-between items-center">
                         <Link to='/' className='md:text-lg text-sm font-medium '>

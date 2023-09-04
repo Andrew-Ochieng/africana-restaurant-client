@@ -11,6 +11,7 @@ const MenuList = ({filteredMenus, loading, error}) => {
     return ( 
         <>
             <div className="md:m-8 m-4">
+                { error && <h4 className="text-red-500">{ error }</h4>}
                 {loading ? (
                     <div className="flex items-center justify-center md:my-64 my-16">
                         <HashLoader 
@@ -22,8 +23,7 @@ const MenuList = ({filteredMenus, loading, error}) => {
                         />
                     </div>
                 ) : (
-                    <div className="grid md:grid-cols-4 gap-4">
-                        { error && <h4 className="text-red-500">{ error }</h4>}
+                    <div className="grid md:grid-cols-4 gap-4"> 
                         {filteredMenus && filteredMenus.map((menuItem, index) => (
                             <div key={index} className=" py-2 px-3 rounded-xl border space-y-3">
                                 <Link to={`/menu_item/${menuItem.id}`}>
